@@ -6,6 +6,12 @@ import javax.swing.*;
 public class EditorView {
     private final JFrame frame;
     private JPanel panel;
+    private JTextArea bodyTextArea;
+    private JButton saveBodyButton;
+    private JTable linksTable;
+    private JButton deleteLinkButton;
+    private JButton createLinkButton;
+    private JTable pagesTable;
 
     /**
      * Constructs an editor view, packs the UI components and displays the
