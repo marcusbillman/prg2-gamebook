@@ -6,6 +6,16 @@ import java.util.ArrayList;
  */
 public class DatabaseModel {
     private Connection connection;
+    private ArrayList<Page> pagesCache;
+    private ArrayList<Link> linksCache;
+
+    public ArrayList<Page> getPagesCache() {
+        return pagesCache;
+    }
+
+    public ArrayList<Link> getLinksCache() {
+        return linksCache;
+    }
 
     /**
      * Establishes a connection to a MySQL database using the credentials in the DatabaseLoginData class.
@@ -46,6 +56,7 @@ public class DatabaseModel {
             ex.printStackTrace();
         }
 
+        this.pagesCache = pages;
         return pages;
     }
 
@@ -70,6 +81,7 @@ public class DatabaseModel {
             ex.printStackTrace();
         }
 
+        this.linksCache = links;
         return links;
     }
 
