@@ -23,6 +23,7 @@ public class EditorController {
         this.currentPageId = page.getId();
 
         this.editorView.populatePagesTable(pages);
+        this.editorView.setBodyContent(page.getBody());
         this.editorView.populateLinksTable(page.getLinks());
     }
 }
