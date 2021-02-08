@@ -1,3 +1,7 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 /**
@@ -25,5 +29,42 @@ public class EditorController {
         this.editorView.populatePagesTable(pages);
         this.editorView.setBodyContent(page.getBody());
         this.editorView.populateLinksTable(page.getLinks());
+
+        // Set up listeners
+        this.editorView.addPagesTableListener(new PagesTableListener());
+    }
+
+    /**
+     * Custom listener based on ActionListener that updates the UI after a page has been selected by the user.
+     */
+    private class PagesTableListener implements MouseListener {
+        /**
+         * Updates the UI after a page has been selected by the user.
+         * @param mouseEvent event that invokes the listener
+         */
+        public void mouseClicked(MouseEvent mouseEvent) {
+            JTable table = (JTable) mouseEvent.getSource();
+            Point point = mouseEvent.getPoint();
+            int index = table.rowAtPoint(point);
+
+            if (table.getSelectedRow() != -1) {
+                Page page = databaseModel.getPagesCache().get(index);
+                currentPageId = page.getId();
+                editorView.setBodyContent(page.getBody());
+                editorView.populateLinksTable(page.getLinks());
+            }
+        }
+
+        public void mousePressed(MouseEvent mouseEvent) {
+        }
+
+        public void mouseReleased(MouseEvent mouseEvent) {
+        }
+
+        public void mouseEntered(MouseEvent mouseEvent) {
+        }
+
+        public void mouseExited(MouseEvent mouseEvent) {
+        }
     }
 }

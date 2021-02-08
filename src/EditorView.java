@@ -1,5 +1,6 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 /**
@@ -103,6 +104,10 @@ public class EditorView {
                     String.valueOf(link.getToPageId())
             });
         }
+    }
+
+    public void addPagesTableListener(MouseListener mouseListener) {
+        this.pagesTable.addMouseListener(mouseListener);
     }
 
     /**
