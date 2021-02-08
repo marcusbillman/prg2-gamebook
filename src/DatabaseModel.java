@@ -1,6 +1,5 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 
 /**
  * Acts as a model that handles reading from and writing to a MySQL database.
@@ -21,6 +20,57 @@ public class DatabaseModel {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+    }
+
+    public ArrayList<Page> getAllPages() {
+        ArrayList<Page> pages = new ArrayList<>();
+
+        try {
+            // Setup statement and execute query
+            Statement statement = connection.createStatement();
+            String query = "SELECT * FROM pages";
+            ResultSet resultSet = statement.executeQuery(query);
+
+            // Loop through the result set and populate the pages ArrayList
+            while (resultSet.next()) {
+                int id = resultSet.getInt("page_id");
+                String body = resultSet.getString("body");
+                boolean isEnding = resultSet.getBoolean("is_ending");
+                ArrayList<Link> links = getLinksFromPage(id);
+
+                pages.add(new Page(id, body, links, isEnding));
+            }
+
+            statement.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return pages;
+    }
+
+    public ArrayList<Link> getLinksFromPage(int fromPageId) {
+        ArrayList<Link> links = new ArrayList<>();
+
+        try {
+            // Setup statement and execute query
+            Statement statement = connection.createStatement();
+            String query = "SELECT * FROM links WHERE from_page_id = " + fromPageId;
+            ResultSet resultSet = statement.executeQuery(query);
+
+            // Loop through the result set and populate the links ArrayList
+            while (resultSet.next()) {
+                String text = resultSet.getString("text");
+                int toPageId = resultSet.getInt("to_page_id");
+                links.add(new Link(fromPageId, toPageId, text));
+            }
+
+            statement.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return links;
     }
 
     /**
