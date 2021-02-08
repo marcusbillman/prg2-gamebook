@@ -60,7 +60,10 @@
             <children>
               <component id="c5cae" class="javax.swing.JTextArea" binding="bodyTextArea">
                 <constraints/>
-                <properties/>
+                <properties>
+                  <lineWrap value="true"/>
+                  <wrapStyleWord value="true"/>
+                </properties>
               </component>
             </children>
           </scrollpane>
