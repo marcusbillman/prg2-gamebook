@@ -21,14 +21,11 @@ public class EditorController {
     public EditorController(DatabaseModel databaseModel, EditorView editorView) {
         this.databaseModel = databaseModel;
         this.editorView = editorView;
+        this.currentPageId = -1;
 
+        // Populate UI
         ArrayList<Page> pages = this.databaseModel.getAllPages();
-        Page page = pages.get(0);
-        this.currentPageId = page.getId();
-
         this.editorView.populatePagesTable(pages);
-        this.editorView.setBodyContent(page.getBody());
-        this.editorView.populateLinksTable(page.getLinks());
 
         // Set up listeners
         this.editorView.addPagesTableListener(new PagesTableListener());
