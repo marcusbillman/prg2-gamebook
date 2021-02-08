@@ -43,6 +43,7 @@
               <component id="d4fbe" class="javax.swing.JTable" binding="linksTable">
                 <constraints/>
                 <properties>
+                  <fillsViewportHeight value="true"/>
                   <preferredSize width="-1" height="-1"/>
                 </properties>
               </component>
@@ -127,7 +128,9 @@
             <children>
               <component id="5edac" class="javax.swing.JTable" binding="pagesTable">
                 <constraints/>
-                <properties/>
+                <properties>
+                  <fillsViewportHeight value="true"/>
+                </properties>
               </component>
             </children>
           </scrollpane>
