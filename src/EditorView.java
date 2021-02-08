@@ -41,6 +41,13 @@ public class EditorView {
         this.pagesTable.getColumnModel().getColumn(1).setPreferredWidth(1000);
         this.pagesTable.setDefaultEditor(Object.class, null); // Disable editing for the table
 
+        // Set up columns for links table
+        DefaultTableModel linksTableModel = new DefaultTableModel();
+        linksTableModel.addColumn("Text");
+        linksTableModel.addColumn("To Page ID");
+        this.linksTable.setModel(linksTableModel);
+        this.linksTable.setDefaultEditor(Object.class, null); // Disable editing for the table
+
         frame.setVisible(true);
     }
 
@@ -78,6 +85,22 @@ public class EditorView {
             tableModel.addRow(new String[]{
                     String.valueOf(page.getId()),
                     page.getBody(),
+            });
+        }
+    }
+
+    /**
+     * Populates the 'Page Links' table with all pages and their id and body
+     * @param links links to populate with
+     */
+    public void populateLinksTable(ArrayList<Link> links) {
+        DefaultTableModel tableModel = (DefaultTableModel) this.linksTable.getModel();
+        tableModel.setRowCount(0);
+
+        for (Link link : links) {
+            tableModel.addRow(new String[]{
+                    link.getText(),
+                    String.valueOf(link.getToPageId())
             });
         }
     }
