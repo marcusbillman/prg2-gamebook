@@ -26,4 +26,25 @@ public class EditorView {
 
         frame.setVisible(true);
     }
+
+    /**
+     * @return main frame
+     */
+    public JFrame getFrame() {
+        return frame;
+    }
+
+    /**
+     * @return text content of 'Page Body' text area
+     */
+    public String getBodyContent() {
+        return bodyTextArea.getText();
+    }
+
+    /**
+     * @param content text content of 'Page Body' text area
+     */
+    public void setBodyContent(String content) {
+        bodyTextArea.setText(content);
+    }
 }
