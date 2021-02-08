@@ -47,4 +47,26 @@ public class EditorView {
     public void setBodyContent(String content) {
         bodyTextArea.setText(content);
     }
+
+    /**
+     * Displays a message dialog to the user.
+     * @param message dialog message
+     * @param title dialog title
+     * @param messageType JOptionPane message type, such as JOptionPane.ERROR_MESSAGE
+     */
+    void showMessageDialog(String message, String title, int messageType) {
+        JOptionPane.showMessageDialog(frame, message, title, messageType);
+    }
+
+    /**
+     * Displays an input dialog to the user, retrieving text input.
+     * @param message dialog message above input field
+     * @param title dialog title
+     * @param initialValue placeholder value in input field
+     * @return text inputted by user
+     */
+    String showInputDialog(String message, String title, String initialValue) {
+        return (String) JOptionPane.showInputDialog(
+                frame, message, title, JOptionPane.QUESTION_MESSAGE, null, null, initialValue);
+    }
 }
