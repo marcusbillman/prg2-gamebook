@@ -1,4 +1,6 @@
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.util.ArrayList;
 
 /**
  * View for the editor. Exposes methods for writing to and reading from the UI.
@@ -30,6 +32,15 @@ public class EditorView {
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frame.pack();
 
+        // Set up columns for pages table
+        DefaultTableModel pagesTableModel = new DefaultTableModel();
+        pagesTableModel.addColumn("ID");
+        pagesTableModel.addColumn("Body");
+        this.pagesTable.setModel(pagesTableModel);
+        this.pagesTable.getColumnModel().getColumn(0).setPreferredWidth(100);
+        this.pagesTable.getColumnModel().getColumn(1).setPreferredWidth(1000);
+        this.pagesTable.setDefaultEditor(Object.class, null); // Disable editing for the table
+
         frame.setVisible(true);
     }
 
@@ -52,6 +63,23 @@ public class EditorView {
      */
     public void setBodyContent(String content) {
         bodyTextArea.setText(content);
+    }
+
+    /**
+     * Populates the 'Pages' table with all pages and their id and body
+     * @param pages pages to populate with
+     */
+    public void populatePagesTable(ArrayList<Page> pages) {
+        System.out.println("populating");
+        DefaultTableModel tableModel = (DefaultTableModel) this.pagesTable.getModel();
+        tableModel.setRowCount(0);
+
+        for (Page page : pages) {
+            tableModel.addRow(new String[]{
+                    String.valueOf(page.getId()),
+                    page.getBody(),
+            });
+        }
     }
 
     /**
