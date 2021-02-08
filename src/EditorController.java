@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * MVC controller for the Gamebook Editor that handles all communication between EditorView (MVC view) and
  * DatabaseModel (MVC model).
@@ -5,6 +7,7 @@
 public class EditorController {
     private DatabaseModel databaseModel;
     private final EditorView editorView;
+    private int currentPageId;
 
     /**
      * Constructs the controller.
@@ -15,6 +18,11 @@ public class EditorController {
         this.databaseModel = databaseModel;
         this.editorView = editorView;
 
-        this.editorView.populatePagesTable(this.databaseModel.getAllPages());
+        ArrayList<Page> pages = this.databaseModel.getAllPages();
+        Page page = pages.get(0);
+        this.currentPageId = page.getId();
+
+        this.editorView.populatePagesTable(pages);
+        this.editorView.populateLinksTable(page.getLinks());
     }
 }
