@@ -14,5 +14,7 @@ public class EditorController {
     public EditorController(DatabaseModel databaseModel, EditorView editorView) {
         this.databaseModel = databaseModel;
         this.editorView = editorView;
+
+        this.editorView.populatePagesTable(this.databaseModel.getAllPages());
     }
 }
