@@ -127,6 +127,23 @@ public class DatabaseModel {
     }
 
     /**
+     * Updates the body text of a page in the database
+     * @param pageId id of the page
+     * @param body new body text to update with
+     */
+    public void updatePageBody(int pageId, String body) {
+        try {
+            // Setup statement and execute query
+            Statement statement = connection.createStatement();
+            String query = "UPDATE pages SET body='" + body + "' WHERE page_id=" + pageId;
+            statement.executeUpdate(query);
+            statement.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
      * Updates the text of a link in the database.
      * @param index index of the link in the links cache
      * @param text new text to update with
