@@ -45,7 +45,7 @@ public class EditorView {
         // Set up columns for links table
         DefaultTableModel linksTableModel = new DefaultTableModel();
         linksTableModel.addColumn("Text");
-        linksTableModel.addColumn("To Page ID");
+        linksTableModel.addColumn("Target Page ID");
         this.linksTable.setModel(linksTableModel);
         this.linksTable.setDefaultEditor(Object.class, null); // Disable editing for the table
 
