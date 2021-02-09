@@ -74,7 +74,7 @@ public class EditorView {
     }
 
     /**
-     * Populates the 'Pages' table with all pages and their id and body
+     * Populates the 'Pages' table with all pages and their id and body.
      * @param pages pages to populate with
      */
     public void populatePagesTable(ArrayList<Page> pages) {
@@ -91,7 +91,7 @@ public class EditorView {
     }
 
     /**
-     * Populates the 'Page Links' table with all pages and their id and body
+     * Populates the 'Page Links' table with all pages and their id and body.
      * @param links links to populate with
      */
     public void populateLinksTable(ArrayList<Link> links) {
@@ -106,10 +106,18 @@ public class EditorView {
         }
     }
 
+    /**
+     * Adds a listener for detecting when the user clicks a page in the 'Pages' table.
+     * @param mouseListener listener that gets attached when this method is called from EditorController
+     */
     public void addPagesTableListener(MouseListener mouseListener) {
         this.pagesTable.addMouseListener(mouseListener);
     }
 
+    /**
+     * Adds a listener for detecting when the user clicks a link in the 'Page Links' table.
+     * @param mouseListener listener that gets attached when this method is called from EditorController
+     */
     public void addLinksTableListener(MouseListener mouseListener) {
         this.linksTable.addMouseListener(mouseListener);
     }

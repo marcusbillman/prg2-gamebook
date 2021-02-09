@@ -2,7 +2,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 /**
- * Acts as a model that handles reading from and writing to a MySQL database.
+ * Model that handles reading from and writing to a MySQL database.
  */
 public class DatabaseModel {
     private Connection connection;
@@ -32,6 +32,10 @@ public class DatabaseModel {
         }
     }
 
+    /**
+     * Fetches all pages from the database. Doesn't include links.
+     * @return all pages in the database
+     */
     public ArrayList<Page> getAllPages() {
         ArrayList<Page> pages = new ArrayList<>();
 
@@ -91,6 +95,11 @@ public class DatabaseModel {
         return page;
     }
 
+    /**
+     * Fetches all links that point from a given page.
+     * @param fromPageId id of the page from which the link points
+     * @return all links that point from the given page
+     */
     public ArrayList<Link> getLinksFromPage(int fromPageId) {
         ArrayList<Link> links = new ArrayList<>();
 

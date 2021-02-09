@@ -46,7 +46,7 @@ public class EditorController {
     }
 
     /**
-     * Custom listener based on ActionListener that updates the UI after a page has been selected by the user.
+     * Custom listener based on MouseListener that updates the UI after a page has been selected by the user.
      */
     private class PagesTableListener implements MouseListener {
         /**
