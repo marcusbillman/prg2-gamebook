@@ -33,6 +33,19 @@ public class EditorController {
     }
 
     /**
+     * Updates the all UI components related to the currently selected page to reflect the latest data from the
+     * database.
+     * @param pageId id of the selected page
+     */
+    private void populatePagePanel(int pageId) {
+        this.currentPageId = pageId;
+
+        Page page = this.databaseModel.getPage(this.currentPageId);
+        this.editorView.setBodyContent(page.getBody());
+        this.editorView.populateLinksTable(page.getLinks());
+    }
+
+    /**
      * Custom listener based on ActionListener that updates the UI after a page has been selected by the user.
      */
     private class PagesTableListener implements MouseListener {
@@ -46,10 +59,8 @@ public class EditorController {
             int index = table.rowAtPoint(point);
 
             if (table.getSelectedRow() != -1) {
-                Page page = databaseModel.getPagesCache().get(index);
-                currentPageId = page.getId();
-                editorView.setBodyContent(page.getBody());
-                editorView.populateLinksTable(page.getLinks());
+                int pageId = databaseModel.getPagesCache().get(index).getId();
+                populatePagePanel(pageId);
             }
         }
 
@@ -87,7 +98,7 @@ public class EditorController {
 
                 if (newText == null) return;
                 databaseModel.updateLinkText(index, newText);
-                refreshPageView();
+                populatePagePanel(currentPageId);
             }
         }
 
