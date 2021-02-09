@@ -110,6 +110,10 @@ public class EditorView {
         this.pagesTable.addMouseListener(mouseListener);
     }
 
+    public void addLinksTableListener(MouseListener mouseListener) {
+        this.linksTable.addMouseListener(mouseListener);
+    }
+
     /**
      * Displays a message dialog to the user.
      * @param message dialog message

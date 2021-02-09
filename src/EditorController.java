@@ -29,6 +29,7 @@ public class EditorController {
 
         // Set up listeners
         this.editorView.addPagesTableListener(new PagesTableListener());
+        this.editorView.addLinksTableListener(new LinksTableListener());
     }
 
     /**
@@ -49,6 +50,44 @@ public class EditorController {
                 currentPageId = page.getId();
                 editorView.setBodyContent(page.getBody());
                 editorView.populateLinksTable(page.getLinks());
+            }
+        }
+
+        public void mousePressed(MouseEvent mouseEvent) {
+        }
+
+        public void mouseReleased(MouseEvent mouseEvent) {
+        }
+
+        public void mouseEntered(MouseEvent mouseEvent) {
+        }
+
+        public void mouseExited(MouseEvent mouseEvent) {
+        }
+    }
+
+    /**
+     * Custom listener based on MouseListener that detects when a page link has been clicked by the user, letting
+     * them edit either the link text or the target page id
+     */
+    private class LinksTableListener implements MouseListener {
+        /**
+         * Lets the user edit either the link text or the target page id of a clicked link.
+         * @param mouseEvent event that invokes the listener
+         */
+        public void mouseClicked(MouseEvent mouseEvent) {
+            JTable table = (JTable) mouseEvent.getSource();
+            Point point = mouseEvent.getPoint();
+            int index = table.rowAtPoint(point);
+
+            if (table.getSelectedRow() != -1) {
+                Link link = databaseModel.getLinksCache().get(index);
+                String newText = editorView.showInputDialog(
+                        "Enter new link text", "Edit Link Text", link.getText());
+
+                if (newText == null) return;
+                databaseModel.updateLinkText(index, newText);
+                refreshPageView();
             }
         }
 
