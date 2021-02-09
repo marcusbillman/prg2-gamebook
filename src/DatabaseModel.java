@@ -46,9 +46,8 @@ public class DatabaseModel {
                 int id = resultSet.getInt("page_id");
                 String body = resultSet.getString("body");
                 boolean isEnding = resultSet.getBoolean("is_ending");
-                ArrayList<Link> links = getLinksFromPage(id);
 
-                pages.add(new Page(id, body, links, isEnding));
+                pages.add(new Page(id, body, isEnding));
             }
 
             statement.close();
@@ -58,6 +57,38 @@ public class DatabaseModel {
 
         this.pagesCache = pages;
         return pages;
+    }
+
+    /**
+     * Fetches a page with a given id from the database. Includes links pointing from that page.
+     * @param pageId id of the desired page
+     * @return the desired page, or null if the SQL query encountered an error
+     */
+    public Page getPage(int pageId) {
+        Page page = null;
+
+        try {
+            // Setup statement and execute query
+            Statement statement = connection.createStatement();
+            String query = "SELECT * FROM pages WHERE page_id = " + pageId;
+            ResultSet resultSet = statement.executeQuery(query);
+
+            // Get data from first result row
+            resultSet.next();
+            int id = resultSet.getInt("page_id");
+            String body = resultSet.getString("body");
+            boolean isEnding = resultSet.getBoolean("is_ending");
+
+            // Get all links that point from this page
+            ArrayList<Link> links = getLinksFromPage(id);
+
+            // Create a Page object
+            page = new Page(id, body, links, isEnding);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return page;
     }
 
     public ArrayList<Link> getLinksFromPage(int fromPageId) {
