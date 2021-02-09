@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -29,6 +31,7 @@ public class EditorController {
 
         // Set up listeners
         this.editorView.addPagesTableListener(new PagesTableListener());
+        this.editorView.addSaveBodyButtonListener(new SaveBodyButtonListener());
         this.editorView.addLinksTableListener(new LinksTableListener());
     }
 
@@ -74,6 +77,21 @@ public class EditorController {
         }
 
         public void mouseExited(MouseEvent mouseEvent) {
+        }
+    }
+
+    /**
+     * Custom listener based on ActionListener that detects when the 'Save' button for the page body has been clicked
+     * by the user.
+     */
+    private class SaveBodyButtonListener implements ActionListener {
+        /**
+         * Saves the body text that the user has edited.
+         * @param actionEvent event that invokes the listener
+         */
+        public void actionPerformed(ActionEvent actionEvent) {
+            databaseModel.updatePageBody(currentPageId, editorView.getBodyContent());
+            populatePagePanel(currentPageId);
         }
     }
 

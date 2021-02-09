@@ -1,5 +1,6 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
@@ -112,6 +113,14 @@ public class EditorView {
      */
     public void addPagesTableListener(MouseListener mouseListener) {
         this.pagesTable.addMouseListener(mouseListener);
+    }
+
+    /**
+     * Adds a listener for detecting when the user clicks the 'Save' button for the page body.
+     * @param actionListener listener that gets attached when this method is called from EditorController
+     */
+    public void addSaveBodyButtonListener(ActionListener actionListener) {
+        this.saveBodyButton.addActionListener(actionListener);
     }
 
     /**
