@@ -25,6 +25,19 @@ public class Page {
     }
 
     /**
+     * Constructs a page with no links defined.
+     * @param id unique identifier for use in database
+     * @param body body text that is shown to the player along with the links
+     * @param isEnding whether to treat this page as an ending of the gamebook
+     */
+    public Page(int id, String body, boolean isEnding) {
+        this.id = id;
+        this.body = body;
+        this.links = new ArrayList<>();
+        this.isEnding = isEnding;
+    }
+
+    /**
      * Constructs a blank page with default property values
      * @param id unique identifier for use in database
      */
