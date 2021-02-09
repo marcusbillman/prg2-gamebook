@@ -102,9 +102,10 @@ public class DatabaseModel {
 
             // Loop through the result set and populate the links ArrayList
             while (resultSet.next()) {
+                int id = resultSet.getInt("link_id");
                 String text = resultSet.getString("text");
                 int toPageId = resultSet.getInt("to_page_id");
-                links.add(new Link(fromPageId, toPageId, text));
+                links.add(new Link(id, fromPageId, toPageId, text));
             }
 
             statement.close();
