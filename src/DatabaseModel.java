@@ -148,6 +148,27 @@ public class DatabaseModel {
     }
 
     /**
+     * Updates the target page id of a link in the database.
+     * @param index index of the link in the links cache
+     * @param toPageId new target page id to update with
+     */
+    public void updateLinkToPageId(int index, int toPageId) {
+        Link link = linksCache.get(index);
+
+        try {
+            // Setup statement and execute query
+            Statement statement = connection.createStatement();
+            String query = "UPDATE links SET to_page_id='" + toPageId + "' WHERE link_id=" + link.getId();
+            statement.executeUpdate(query);
+            statement.close();
+
+            link.setToPageId(toPageId);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
      * Closes the database connection safely.
      */
     public void closeConnection() {
