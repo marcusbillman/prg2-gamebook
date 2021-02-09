@@ -117,6 +117,27 @@ public class DatabaseModel {
     }
 
     /**
+     * Updates the text of a link in the database.
+     * @param index index of the link in the links cache
+     * @param text new text to update with
+     */
+    public void updateLinkText(int index, String text) {
+        Link link = linksCache.get(index);
+
+        try {
+            // Setup statement and execute query
+            Statement statement = connection.createStatement();
+            String query = "UPDATE links SET text='" + text + "' WHERE link_id=" + link.getId();
+            statement.executeUpdate(query);
+            statement.close();
+
+            link.setText(text);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
      * Closes the database connection safely.
      */
     public void closeConnection() {
