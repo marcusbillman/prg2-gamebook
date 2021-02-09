@@ -90,16 +90,23 @@ public class EditorController {
             JTable table = (JTable) mouseEvent.getSource();
             Point point = mouseEvent.getPoint();
             int index = table.rowAtPoint(point);
+            Link link = databaseModel.getLinksCache().get(index);
 
-            if (table.getSelectedRow() != -1) {
-                Link link = databaseModel.getLinksCache().get(index);
+            if (table.getSelectedRow() == -1) return;
+
+            if (table.getSelectedColumn() == 0) {
                 String newText = editorView.showInputDialog(
                         "Enter new link text", "Edit Link Text", link.getText());
-
                 if (newText == null) return;
                 databaseModel.updateLinkText(index, newText);
-                populatePagePanel(currentPageId);
+            } else {
+                String userInput = editorView.showInputDialog(
+                        "Enter new target page id", "Edit Link Target", String.valueOf(link.getToPageId()));
+                if (userInput == null || !userInput.matches("\\d+")) return;
+                databaseModel.updateLinkToPageId(index, Integer.parseInt(userInput));
             }
+
+            populatePagePanel(currentPageId);
         }
 
         public void mousePressed(MouseEvent mouseEvent) {
