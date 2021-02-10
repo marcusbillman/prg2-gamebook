@@ -1,9 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
 import java.util.ArrayList;
 
 /**
@@ -33,6 +30,7 @@ public class EditorController {
         this.editorView.addPagesTableListener(new PagesTableListener());
         this.editorView.addSaveBodyButtonListener(new SaveBodyButtonListener());
         this.editorView.addLinksTableListener(new LinksTableListener());
+        this.editorView.addWindowCloseListener(new WindowCloseListener());
     }
 
     /**
@@ -137,6 +135,39 @@ public class EditorController {
         }
 
         public void mouseExited(MouseEvent mouseEvent) {
+        }
+    }
+
+    /**
+     * Custom listener based on WindowListener that detects when the user closes the application window, safely
+     * exiting the application.
+     */
+    private class WindowCloseListener implements WindowListener {
+        public void windowOpened(WindowEvent windowEvent) {
+        }
+
+        /**
+         * Exits the program safely when the window is closed by the user. Closes the database connection.
+         * @param windowEvent event that invokes the listener
+         */
+        public void windowClosing(WindowEvent windowEvent) {
+            databaseModel.closeConnection();
+            editorView.getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        }
+
+        public void windowClosed(WindowEvent windowEvent) {
+        }
+
+        public void windowIconified(WindowEvent windowEvent) {
+        }
+
+        public void windowDeiconified(WindowEvent windowEvent) {
+        }
+
+        public void windowActivated(WindowEvent windowEvent) {
+        }
+
+        public void windowDeactivated(WindowEvent windowEvent) {
         }
     }
 }

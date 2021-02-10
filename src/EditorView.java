@@ -2,6 +2,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowListener;
 import java.util.ArrayList;
 
 /**
@@ -129,6 +130,14 @@ public class EditorView {
      */
     public void addLinksTableListener(MouseListener mouseListener) {
         this.linksTable.addMouseListener(mouseListener);
+    }
+
+    /**
+     * Adds a listener for detecting when the user closes the application window.
+     * @param windowListener listener that gets attached when this method is called from EditorController
+     */
+    public void addWindowCloseListener(WindowListener windowListener) {
+        frame.addWindowListener(windowListener);
     }
 
     /**
