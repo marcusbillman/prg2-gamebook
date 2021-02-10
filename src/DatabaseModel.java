@@ -142,6 +142,23 @@ public class DatabaseModel {
     }
 
     /**
+     * Inserts a blank link into the database. By default, the link points from and to the same page.
+     * @param fromPageId id of the page from which the link should point
+     */
+    public void createLink(int fromPageId) {
+        try {
+            // Setup statement and execute query
+            Statement statement = connection.createStatement();
+            String query = "INSERT INTO links (from_page_id, to_page_id)" +
+                    "VALUES (" + fromPageId + ", " + fromPageId + ")";
+            statement.executeUpdate(query);
+            statement.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
      * Updates the body text of a page in the database
      * @param pageId id of the page
      * @param body new body text to update with
