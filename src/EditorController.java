@@ -23,8 +23,7 @@ public class EditorController {
         this.currentPageId = -1;
 
         // Populate UI
-        ArrayList<Page> pages = this.databaseModel.getAllPages();
-        this.editorView.populatePagesTable(pages);
+        this.refreshPages();
 
         // Set up listeners
         this.editorView.addPagesTableListener(new PagesTableListener());
@@ -32,6 +31,14 @@ public class EditorController {
         this.editorView.addSaveBodyButtonListener(new SaveBodyButtonListener());
         this.editorView.addLinksTableListener(new LinksTableListener());
         this.editorView.addWindowCloseListener(new WindowCloseListener());
+    }
+
+    /**
+     * Updates the 'Pages' table to reflect the latest list of pages from the database.
+     */
+    private void refreshPages() {
+        ArrayList<Page> pages = this.databaseModel.getAllPages();
+        this.editorView.populatePagesTable(pages);
     }
 
     /**
@@ -89,7 +96,7 @@ public class EditorController {
          */
         public void actionPerformed(ActionEvent actionEvent) {
             databaseModel.createPage();
-            populatePagesTable();
+            refreshPages();
 
             // Select the last page
             editorView.selectPage(-1);
