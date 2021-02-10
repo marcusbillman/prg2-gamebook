@@ -30,6 +30,7 @@ public class EditorController {
         this.editorView.addCreatePageButtonListener(new CreatePageButtonListener());
         this.editorView.addSaveBodyButtonListener(new SaveBodyButtonListener());
         this.editorView.addLinksTableListener(new LinksTableListener());
+        this.editorView.addCreateLinkButtonListener(new CreateLinkButtonListener());
         this.editorView.addWindowCloseListener(new WindowCloseListener());
     }
 
@@ -163,6 +164,20 @@ public class EditorController {
         }
 
         public void mouseExited(MouseEvent mouseEvent) {
+        }
+    }
+
+    /**
+     * Custom listener based on ActionListener that detects when the 'Create Link' has been clicked by the user.
+     */
+    private class CreateLinkButtonListener implements ActionListener {
+        /**
+         * Creates a new link after the 'Create Link' button has been clicked by the user.
+         * @param actionEvent event that invokes the listener
+         */
+        public void actionPerformed(ActionEvent actionEvent) {
+            databaseModel.createLink(currentPageId);
+            populatePagePanel(currentPageId);
         }
     }
 
