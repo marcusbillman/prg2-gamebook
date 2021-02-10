@@ -93,6 +93,15 @@ public class EditorView {
     }
 
     /**
+     * Visually selects a row in the 'Pages' table, indicating the currently selected page.
+     * @param index index of the row in the 'Pages' table, or -1 to select the last row
+     */
+    public void selectPage(int index) {
+        if (index == -1) index = this.pagesTable.getRowCount() - 1;
+        this.pagesTable.setRowSelectionInterval(index, index);
+    }
+
+    /**
      * Populates the 'Page Links' table with all pages and their id and body.
      * @param links links to populate with
      */
