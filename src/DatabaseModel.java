@@ -127,6 +127,21 @@ public class DatabaseModel {
     }
 
     /**
+     * Inserts a blank page into the database.
+     */
+    public void createPage() {
+        try {
+            // Setup statement and execute query
+            Statement statement = connection.createStatement();
+            String query = "INSERT INTO pages (body, is_ending) VALUES ('', 0)";
+            statement.executeUpdate(query);
+            statement.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
      * Updates the body text of a page in the database
      * @param pageId id of the page
      * @param body new body text to update with
