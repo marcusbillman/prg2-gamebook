@@ -117,6 +117,14 @@ public class EditorView {
     }
 
     /**
+     * Adds a listener for detecting when the user clicks the 'Create Page' button.
+     * @param actionListener listener that gets attached when this method is called from EditorController
+     */
+    public void addCreatePageButtonListener(ActionListener actionListener) {
+        this.createPageButton.addActionListener(actionListener);
+    }
+
+    /**
      * Adds a listener for detecting when the user clicks the 'Save' button for the page body.
      * @param actionListener listener that gets attached when this method is called from EditorController
      */

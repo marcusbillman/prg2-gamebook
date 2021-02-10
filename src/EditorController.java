@@ -28,6 +28,7 @@ public class EditorController {
 
         // Set up listeners
         this.editorView.addPagesTableListener(new PagesTableListener());
+        this.editorView.addCreatePageButtonListener(new CreatePageButtonListener());
         this.editorView.addSaveBodyButtonListener(new SaveBodyButtonListener());
         this.editorView.addLinksTableListener(new LinksTableListener());
         this.editorView.addWindowCloseListener(new WindowCloseListener());
@@ -75,6 +76,26 @@ public class EditorController {
         }
 
         public void mouseExited(MouseEvent mouseEvent) {
+        }
+    }
+
+    /**
+     * Custom listener based on ActionListener that detects when the 'Create Page' has been clicked by the user.
+     */
+    private class CreatePageButtonListener implements ActionListener {
+        /**
+         * Creates a new page after the 'Create Page' button has been clicked by the user.
+         * @param actionEvent event that invokes the listener
+         */
+        public void actionPerformed(ActionEvent actionEvent) {
+            databaseModel.createPage();
+            populatePagesTable();
+
+            // Select the last page
+            editorView.selectPage(-1);
+            ArrayList<Page> pagesCache = databaseModel.getPagesCache();
+            int pageId = pagesCache.get(pagesCache.size() - 1).getId();
+            populatePagePanel(pageId);
         }
     }
 
