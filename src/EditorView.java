@@ -172,6 +172,14 @@ public class EditorView {
     }
 
     /**
+     * Adds a listener for detecting when the user clicks the 'Delete Link' button.
+     * @param actionListener listener that gets attached when this method is called from EditorController
+     */
+    public void addDeleteLinkButtonListener(ActionListener actionListener) {
+        this.deleteLinkButton.addActionListener(actionListener);
+    }
+
+    /**
      * Adds a listener for detecting when the user closes the application window.
      * @param windowListener listener that gets attached when this method is called from EditorController
      */

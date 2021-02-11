@@ -31,6 +31,7 @@ public class EditorController {
         this.editorView.addSaveBodyButtonListener(new SaveBodyButtonListener());
         this.editorView.addLinksTableListener(new LinksTableListener());
         this.editorView.addCreateLinkButtonListener(new CreateLinkButtonListener());
+        this.editorView.addDeleteLinkButtonListener(new DeleteLinkButtonListener());
         this.editorView.addWindowCloseListener(new WindowCloseListener());
     }
 
@@ -178,6 +179,24 @@ public class EditorController {
          */
         public void actionPerformed(ActionEvent actionEvent) {
             databaseModel.createLink(currentPageId);
+            populatePagePanel(currentPageId);
+        }
+    }
+
+    /**
+     * Custom listener based on ActionListener that detects when the 'Delete Link' has been clicked by the user.
+     */
+    private class DeleteLinkButtonListener implements ActionListener {
+        /**
+         * Deletes the selected link after the 'Delete Link' button has been clicked by the user.
+         * @param actionEvent event that invokes the listener
+         */
+        public void actionPerformed(ActionEvent actionEvent) {
+            int index = editorView.getSelectedLink();
+
+            if (index == -1) return;
+
+            databaseModel.deleteLink(index);
             populatePagePanel(currentPageId);
         }
     }
