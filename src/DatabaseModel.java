@@ -218,6 +218,24 @@ public class DatabaseModel {
     }
 
     /**
+     * Deletes a page from the database.
+     * @param index index of the page in the pages cache
+     */
+    public void deletePage(int index) {
+        Page page = pagesCache.get(index);
+
+        try {
+            // Setup statement and execute query
+            Statement statement = connection.createStatement();
+            String query = "DELETE FROM pages WHERE page_id=" + page.getId();
+            statement.executeUpdate(query);
+            statement.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
      * Deletes a link from the database.
      * @param index index of the link in the links cache
      */
