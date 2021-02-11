@@ -136,7 +136,7 @@ public class EditorController {
             Point point = mouseEvent.getPoint();
             int index = table.rowAtPoint(point);
 
-            if (table.getSelectedRow() == -1 || index == -1) return;
+            if (mouseEvent.getClickCount() < 2 || table.getSelectedRow() == -1 || index == -1) return;
 
             Link link = databaseModel.getLinksCache().get(index);
 
