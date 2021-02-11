@@ -24,6 +24,7 @@ public class EditorView {
     private JTable linksTable;
     private JButton createLinkButton;
     private JButton deleteLinkButton;
+    private JCheckBox endingCheckBox;
 
     /**
      * Constructs an editor view, packs the UI components and displays the
