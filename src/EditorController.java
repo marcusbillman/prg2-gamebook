@@ -45,13 +45,9 @@ public class EditorController {
     }
 
     /**
-     * Updates the all UI components related to the currently selected page to reflect the latest data from the
-     * database.
-     * @param pageId id of the selected page
+     * Updates all UI components related to the currently selected page to reflect the latest data from the database.
      */
-    private void populatePagePanel(int pageId) {
-        this.currentPageId = pageId;
-
+    private void refreshCurrentPage() {
         Page page = this.databaseModel.getPage(this.currentPageId);
         this.editorView.setBodyContent(page.getBody());
         this.editorView.populateLinksTable(page.getLinks());
@@ -64,10 +60,10 @@ public class EditorController {
     private void selectPage(int index) {
         ArrayList<Page> pagesCache = databaseModel.getPagesCache();
         if (index == -1 || index >= pagesCache.size()) index = pagesCache.size() - 1;
-        int pageId = pagesCache.get(index).getId();
 
+        this.currentPageId = pagesCache.get(index).getId();
         this.editorView.setSelectedPage(index);
-        populatePagePanel(pageId);
+        refreshCurrentPage();
     }
 
     /**
@@ -147,7 +143,7 @@ public class EditorController {
          */
         public void actionPerformed(ActionEvent actionEvent) {
             databaseModel.updatePageBody(currentPageId, editorView.getBodyContent());
-            populatePagePanel(currentPageId);
+            refreshCurrentPage();
         }
     }
 
@@ -181,7 +177,7 @@ public class EditorController {
                 databaseModel.updateLinkToPageId(index, Integer.parseInt(userInput));
             }
 
-            populatePagePanel(currentPageId);
+            refreshCurrentPage();
         }
 
         public void mousePressed(MouseEvent mouseEvent) {
@@ -207,7 +203,7 @@ public class EditorController {
          */
         public void actionPerformed(ActionEvent actionEvent) {
             databaseModel.createLink(currentPageId);
-            populatePagePanel(currentPageId);
+            refreshCurrentPage();
         }
     }
 
@@ -225,7 +221,7 @@ public class EditorController {
             if (index == -1) return;
 
             databaseModel.deleteLink(index);
-            populatePagePanel(currentPageId);
+            refreshCurrentPage();
         }
     }
 
