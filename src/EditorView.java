@@ -182,6 +182,14 @@ public class EditorView {
     }
 
     /**
+     * Adds a listener for detecting when the user clicks the 'Page is Ending' checkbox.
+     * @param mouseListener listener that gets attached when this method is called from EditorController
+     */
+    public void addEndingCheckBoxListener(MouseListener mouseListener) {
+        this.endingCheckBox.addMouseListener(mouseListener);
+    }
+
+    /**
      * Adds a listener for detecting when the user clicks a link in the 'Page Links' table.
      * @param mouseListener listener that gets attached when this method is called from EditorController
      */

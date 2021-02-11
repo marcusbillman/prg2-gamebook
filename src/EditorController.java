@@ -32,6 +32,7 @@ public class EditorController {
         this.editorView.addCreatePageButtonListener(new CreatePageButtonListener());
         this.editorView.addDeletePageButtonListener(new DeletePageButtonListener());
         this.editorView.addSaveBodyButtonListener(new SaveBodyButtonListener());
+        this.editorView.addEndingCheckBoxListener(new EndingCheckBoxListener());
         this.editorView.addLinksTableListener(new LinksTableListener());
         this.editorView.addCreateLinkButtonListener(new CreateLinkButtonListener());
         this.editorView.addDeleteLinkButtonListener(new DeleteLinkButtonListener());
@@ -135,6 +136,34 @@ public class EditorController {
             databaseModel.updatePageBody(currentPageId, editorView.getBodyContent());
             refreshPages();
             refreshCurrentPage();
+        }
+    }
+
+    /**
+     * Custom listener based on MouseListener that detects when the 'Page is Ending' checkbox has been clicked by the
+     * user.
+     */
+    private class EndingCheckBoxListener implements MouseListener {
+        /**
+         * Updates the isEnding attribute of the current page when the 'Page is Ending' checkbox has been clicked by
+         * the user.
+         * @param mouseEvent event that invokes the listener
+         */
+        public void mouseClicked(MouseEvent mouseEvent) {
+            JCheckBox checkBox = (JCheckBox) mouseEvent.getSource();
+            databaseModel.updatePageIsEnding(currentPageId, checkBox.isSelected());
+        }
+
+        public void mousePressed(MouseEvent mouseEvent) {
+        }
+
+        public void mouseReleased(MouseEvent mouseEvent) {
+        }
+
+        public void mouseEntered(MouseEvent mouseEvent) {
+        }
+
+        public void mouseExited(MouseEvent mouseEvent) {
         }
     }
 
