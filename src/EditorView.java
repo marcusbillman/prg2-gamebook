@@ -148,6 +148,14 @@ public class EditorView {
     }
 
     /**
+     * Adds a listener for detecting when the user clicks the 'Delete Page' button.
+     * @param actionListener listener that gets attached when this method is called from EditorController
+     */
+    public void addDeletePageButtonListener(ActionListener actionListener) {
+        this.deletePageButton.addActionListener(actionListener);
+    }
+
+    /**
      * Adds a listener for detecting when the user clicks the 'Save' button for the page body.
      * @param actionListener listener that gets attached when this method is called from EditorController
      */

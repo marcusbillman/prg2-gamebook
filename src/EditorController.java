@@ -28,6 +28,7 @@ public class EditorController {
         // Set up listeners
         this.editorView.addPagesTableListener(new PagesTableListener());
         this.editorView.addCreatePageButtonListener(new CreatePageButtonListener());
+        this.editorView.addDeletePageButtonListener(new DeletePageButtonListener());
         this.editorView.addSaveBodyButtonListener(new SaveBodyButtonListener());
         this.editorView.addLinksTableListener(new LinksTableListener());
         this.editorView.addCreateLinkButtonListener(new CreateLinkButtonListener());
@@ -104,6 +105,31 @@ public class EditorController {
             editorView.selectPage(-1);
             ArrayList<Page> pagesCache = databaseModel.getPagesCache();
             int pageId = pagesCache.get(pagesCache.size() - 1).getId();
+            populatePagePanel(pageId);
+        }
+    }
+
+    /**
+     * Custom listener based on ActionListener that detects when the 'Delete Page' has been clicked by the user.
+     */
+    private class DeletePageButtonListener implements ActionListener {
+        /**
+         * Deletes the selected page after the 'Delete Page' button has been clicked by the user.
+         * @param actionEvent event that invokes the listener
+         */
+        public void actionPerformed(ActionEvent actionEvent) {
+            int index = editorView.getSelectedPage();
+
+            if (index == -1) return;
+
+            databaseModel.deletePage(index);
+            refreshPages();
+
+            // Select the next page
+            ArrayList<Page> pagesCache = databaseModel.getPagesCache();
+            int selectIndex = Math.min(index, pagesCache.size() - 1);
+            editorView.selectPage(selectIndex);
+            int pageId = pagesCache.get(selectIndex).getId();
             populatePagePanel(pageId);
         }
     }
