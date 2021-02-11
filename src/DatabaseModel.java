@@ -218,6 +218,24 @@ public class DatabaseModel {
     }
 
     /**
+     * Deletes a link from the database.
+     * @param index index of the link in the links cache
+     */
+    public void deleteLink(int index) {
+        Link link = linksCache.get(index);
+
+        try {
+            // Setup statement and execute query
+            Statement statement = connection.createStatement();
+            String query = "DELETE FROM links WHERE link_id=" + link.getId();
+            statement.executeUpdate(query);
+            statement.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
      * Closes the database connection safely.
      */
     public void closeConnection() {
