@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
@@ -104,7 +105,10 @@ public class EditorView {
      * @param index index of the row in the 'Pages' table
      */
     public void setSelectedPage(int index) {
-        this.pagesTable.setRowSelectionInterval(index, index);
+        try {
+            this.pagesTable.setRowSelectionInterval(index, index);
+        } catch (Exception ignored) {
+        }
     }
 
     /**
@@ -132,10 +136,10 @@ public class EditorView {
 
     /**
      * Adds a listener for detecting when the user clicks a page in the 'Pages' table.
-     * @param mouseListener listener that gets attached when this method is called from EditorController
+     * @param listSelectionListener listener that gets attached when this method is called from EditorController
      */
-    public void addPagesTableListener(MouseListener mouseListener) {
-        this.pagesTable.addMouseListener(mouseListener);
+    public void addPagesTableListener(ListSelectionListener listSelectionListener) {
+        this.pagesTable.getSelectionModel().addListSelectionListener(listSelectionListener);
     }
 
     /**

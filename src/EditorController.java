@@ -1,4 +1,6 @@
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -67,33 +69,20 @@ public class EditorController {
     }
 
     /**
-     * Custom listener based on MouseListener that updates the UI after a page has been selected by the user.
+     * Custom listener based on ListSelectionListener that updates the UI after a page has been selected by the user.
      */
-    private class PagesTableListener implements MouseListener {
+    private class PagesTableListener implements ListSelectionListener {
         /**
          * Updates the UI after a page has been selected by the user.
-         * @param mouseEvent event that invokes the listener
+         * @param listSelectionEvent event that invokes the listener
          */
-        public void mouseClicked(MouseEvent mouseEvent) {
-            JTable table = (JTable) mouseEvent.getSource();
-            Point point = mouseEvent.getPoint();
-            int index = table.rowAtPoint(point);
+        public void valueChanged(ListSelectionEvent listSelectionEvent) {
+            DefaultListSelectionModel listSelectionModel = (DefaultListSelectionModel) listSelectionEvent.getSource();
+            int index = listSelectionModel.getLeadSelectionIndex();
 
-            if (table.getSelectedRow() == -1 || index == -1) return;
+            if (index == -1) return;
 
             selectPage(index);
-        }
-
-        public void mousePressed(MouseEvent mouseEvent) {
-        }
-
-        public void mouseReleased(MouseEvent mouseEvent) {
-        }
-
-        public void mouseEntered(MouseEvent mouseEvent) {
-        }
-
-        public void mouseExited(MouseEvent mouseEvent) {
         }
     }
 
