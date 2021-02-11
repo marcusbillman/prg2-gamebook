@@ -176,6 +176,22 @@ public class DatabaseModel {
     }
 
     /**
+     * Updates the ending attribute of a page in the database.
+     * @param isEnding whether to treat this page as an ending of the gamebook
+     */
+    public void updatePageIsEnding(int pageId, boolean isEnding) {
+        try {
+            // Setup statement and execute query
+            Statement statement = connection.createStatement();
+            String query = "UPDATE pages SET is_ending=" + (isEnding ? 1 : 0) + " WHERE page_id=" + pageId;
+            statement.executeUpdate(query);
+            statement.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
      * Updates the text of a link in the database.
      * @param index index of the link in the links cache
      * @param text new text to update with
