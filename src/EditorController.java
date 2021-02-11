@@ -52,6 +52,7 @@ public class EditorController {
     private void refreshCurrentPage() {
         Page page = this.databaseModel.getPage(this.currentPageId);
         this.editorView.setBodyContent(page.getBody());
+        this.editorView.setEndingChecked(page.isEnding());
         this.editorView.populateLinksTable(page.getLinks());
     }
 
