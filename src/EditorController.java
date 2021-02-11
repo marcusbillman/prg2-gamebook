@@ -68,10 +68,10 @@ public class EditorController {
             Point point = mouseEvent.getPoint();
             int index = table.rowAtPoint(point);
 
-            if (table.getSelectedRow() != -1) {
-                int pageId = databaseModel.getPagesCache().get(index).getId();
-                populatePagePanel(pageId);
-            }
+            if (table.getSelectedRow() == -1 || index == -1) return;
+
+            int pageId = databaseModel.getPagesCache().get(index).getId();
+            populatePagePanel(pageId);
         }
 
         public void mousePressed(MouseEvent mouseEvent) {
@@ -135,9 +135,10 @@ public class EditorController {
             JTable table = (JTable) mouseEvent.getSource();
             Point point = mouseEvent.getPoint();
             int index = table.rowAtPoint(point);
-            Link link = databaseModel.getLinksCache().get(index);
 
-            if (table.getSelectedRow() == -1) return;
+            if (table.getSelectedRow() == -1 || index == -1) return;
+
+            Link link = databaseModel.getLinksCache().get(index);
 
             if (table.getSelectedColumn() == 0) {
                 String newText = editorView.showInputDialog(
