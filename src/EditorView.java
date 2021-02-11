@@ -78,6 +78,20 @@ public class EditorView {
     }
 
     /**
+     * @return whether the 'Page is Ending' checkbox is checked
+     */
+    public boolean isEndingChecked() {
+        return this.endingCheckBox.isSelected();
+    }
+
+    /**
+     * @param checked whether the 'Page is Ending' checkbox should be checked
+     */
+    public void setEndingChecked(boolean checked) {
+        this.endingCheckBox.setSelected(checked);
+    }
+
+    /**
      * Populates the 'Pages' table with all pages and their id and body.
      * @param pages pages to populate with
      */
