@@ -58,6 +58,19 @@ public class EditorController {
     }
 
     /**
+     * Visually selects a desired page in the 'Pages' table and populates the right panel with page data.
+     * @param index index of the page to select based on the pages cache
+     */
+    private void selectPage(int index) {
+        ArrayList<Page> pagesCache = databaseModel.getPagesCache();
+        if (index == -1 || index >= pagesCache.size()) index = pagesCache.size() - 1;
+        int pageId = pagesCache.get(index).getId();
+
+        this.editorView.setSelectedPage(index);
+        populatePagePanel(pageId);
+    }
+
+    /**
      * Custom listener based on MouseListener that updates the UI after a page has been selected by the user.
      */
     private class PagesTableListener implements MouseListener {
@@ -72,8 +85,7 @@ public class EditorController {
 
             if (table.getSelectedRow() == -1 || index == -1) return;
 
-            int pageId = databaseModel.getPagesCache().get(index).getId();
-            populatePagePanel(pageId);
+            selectPage(index);
         }
 
         public void mousePressed(MouseEvent mouseEvent) {
@@ -99,13 +111,9 @@ public class EditorController {
          */
         public void actionPerformed(ActionEvent actionEvent) {
             databaseModel.createPage();
-            refreshPages();
 
-            // Select the last page
-            editorView.selectPage(-1);
-            ArrayList<Page> pagesCache = databaseModel.getPagesCache();
-            int pageId = pagesCache.get(pagesCache.size() - 1).getId();
-            populatePagePanel(pageId);
+            refreshPages();
+            selectPage(-1);
         }
     }
 
@@ -124,13 +132,7 @@ public class EditorController {
 
             databaseModel.deletePage(index);
             refreshPages();
-
-            // Select the next page
-            ArrayList<Page> pagesCache = databaseModel.getPagesCache();
-            int selectIndex = Math.min(index, pagesCache.size() - 1);
-            editorView.selectPage(selectIndex);
-            int pageId = pagesCache.get(selectIndex).getId();
-            populatePagePanel(pageId);
+            selectPage(index);
         }
     }
 

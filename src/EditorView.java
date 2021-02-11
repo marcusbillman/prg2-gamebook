@@ -101,10 +101,9 @@ public class EditorView {
 
     /**
      * Visually selects a row in the 'Pages' table, indicating the currently selected page.
-     * @param index index of the row in the 'Pages' table, or -1 to select the last row
+     * @param index index of the row in the 'Pages' table
      */
-    public void selectPage(int index) {
-        if (index == -1) index = this.pagesTable.getRowCount() - 1;
+    public void setSelectedPage(int index) {
         this.pagesTable.setRowSelectionInterval(index, index);
     }
 
