@@ -132,6 +132,7 @@ public class EditorController {
          */
         public void actionPerformed(ActionEvent actionEvent) {
             databaseModel.updatePageBody(currentPageId, editorView.getBodyContent());
+            refreshPages();
             refreshCurrentPage();
         }
     }
