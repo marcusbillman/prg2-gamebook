@@ -93,12 +93,26 @@ public class EditorView {
     }
 
     /**
+     * @return index of the selected row in the 'Pages' table
+     */
+    public int getSelectedPage() {
+        return this.pagesTable.getSelectedRow();
+    }
+
+    /**
      * Visually selects a row in the 'Pages' table, indicating the currently selected page.
      * @param index index of the row in the 'Pages' table, or -1 to select the last row
      */
     public void selectPage(int index) {
         if (index == -1) index = this.pagesTable.getRowCount() - 1;
         this.pagesTable.setRowSelectionInterval(index, index);
+    }
+
+    /**
+     * @return index of the selected row in the 'Page Links' table
+     */
+    public int getSelectedLink() {
+        return this.linksTable.getSelectedRow();
     }
 
     /**
