@@ -150,6 +150,27 @@ public class EditorView {
     }
 
     /**
+     * Sets the enabled state for all UI elements that require a selected page in order to function
+     * @param enabled enabled state
+     */
+    public void setPageRelatedEnabled(boolean enabled) {
+        this.deletePageButton.setEnabled(enabled);
+        this.bodyTextArea.setEnabled(enabled);
+        this.endingCheckBox.setEnabled(enabled);
+        this.linksTable.setEnabled(enabled);
+        this.createLinkButton.setEnabled(enabled);
+        this.deleteLinkButton.setEnabled(enabled);
+    }
+
+    /**
+     * Sets the enabled state for the 'Delete Link' button.
+     * @param enabled enabled state for the 'Delete Link' button
+     */
+    public void setDeleteLinkButtonEnabled(boolean enabled) {
+        this.deleteLinkButton.setEnabled(enabled);
+    }
+
+    /**
      * Adds a listener for detecting when the user clicks a page in the 'Pages' table.
      * @param listSelectionListener listener that gets attached when this method is called from EditorController
      */
