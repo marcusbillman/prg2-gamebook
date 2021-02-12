@@ -134,6 +134,18 @@ public class EditorView {
     }
 
     /**
+     * Visually selects a row in the 'Page Links' table, indicating the currently selected link.
+     * @param index index of the row in the 'Page Links' table
+     */
+    public void setSelectedLink(int index) {
+        try {
+            if (index == -1 || index >= this.linksTable.getRowCount()) index = this.linksTable.getRowCount() -1;
+            this.linksTable.setRowSelectionInterval(index, index);
+        } catch (Exception ignored) {
+        }
+    }
+
+    /**
      * Populates the 'Page Links' table with all pages and their id and body.
      * @param links links to populate with
      */
