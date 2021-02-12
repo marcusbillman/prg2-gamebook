@@ -23,6 +23,7 @@ public class EditorController {
         this.databaseModel = databaseModel;
         this.editorView = editorView;
         this.currentPageId = -1;
+        this.editorView.setPageRelatedEnabled(false);
 
         // Populate UI
         this.refreshPages();
@@ -68,6 +69,8 @@ public class EditorController {
         this.currentPageId = pagesCache.get(index).getId();
         this.editorView.setSelectedPage(index);
         refreshCurrentPage();
+        this.editorView.setPageRelatedEnabled(true);
+        this.editorView.setDeleteLinkButtonEnabled(false);
     }
 
     /**
@@ -181,7 +184,11 @@ public class EditorController {
             Point point = mouseEvent.getPoint();
             int index = table.rowAtPoint(point);
 
-            if (mouseEvent.getClickCount() < 2 || table.getSelectedRow() == -1 || index == -1) return;
+            if (table.getSelectedRow() == -1 || index == -1) return;
+
+            editorView.setDeleteLinkButtonEnabled(true);
+
+            if (mouseEvent.getClickCount() < 2) return;
 
             Link link = databaseModel.getLinksCache().get(index);
 
@@ -223,7 +230,9 @@ public class EditorController {
          */
         public void actionPerformed(ActionEvent actionEvent) {
             databaseModel.createLink(currentPageId);
+
             refreshCurrentPage();
+            editorView.setDeleteLinkButtonEnabled(true);
         }
     }
 
@@ -241,7 +250,9 @@ public class EditorController {
             if (index == -1) return;
 
             databaseModel.deleteLink(index);
+
             refreshCurrentPage();
+            if (databaseModel.getLinksCache().size() < 1) editorView.setDeleteLinkButtonEnabled(false);
         }
     }
 
