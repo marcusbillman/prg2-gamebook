@@ -232,6 +232,7 @@ public class EditorController {
             databaseModel.createLink(currentPageId);
 
             refreshCurrentPage();
+            editorView.setSelectedLink(-1);
             editorView.setDeleteLinkButtonEnabled(true);
         }
     }
@@ -252,6 +253,7 @@ public class EditorController {
             databaseModel.deleteLink(index);
 
             refreshCurrentPage();
+            editorView.setSelectedLink(index);
             if (databaseModel.getLinksCache().size() < 1) editorView.setDeleteLinkButtonEnabled(false);
         }
     }
