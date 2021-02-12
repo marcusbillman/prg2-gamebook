@@ -37,7 +37,7 @@ public class EditorView {
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frame.pack();
 
-        // Set up columns for pages table
+        // Set up pages table
         DefaultTableModel pagesTableModel = new DefaultTableModel();
         pagesTableModel.addColumn("ID");
         pagesTableModel.addColumn("Body");
@@ -45,13 +45,15 @@ public class EditorView {
         this.pagesTable.getColumnModel().getColumn(0).setPreferredWidth(100);
         this.pagesTable.getColumnModel().getColumn(1).setPreferredWidth(1000);
         this.pagesTable.setDefaultEditor(Object.class, null); // Disable editing for the table
+        this.pagesTable.getTableHeader().setReorderingAllowed(false); // Disable reordering columns by dragging
 
-        // Set up columns for links table
+        // Set up links table
         DefaultTableModel linksTableModel = new DefaultTableModel();
         linksTableModel.addColumn("Text");
         linksTableModel.addColumn("Target Page ID");
         this.linksTable.setModel(linksTableModel);
         this.linksTable.setDefaultEditor(Object.class, null); // Disable editing for the table
+        this.linksTable.getTableHeader().setReorderingAllowed(false); // Disable reordering columns by dragging
 
         frame.setVisible(true);
     }
