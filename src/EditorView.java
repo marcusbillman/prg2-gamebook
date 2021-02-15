@@ -165,23 +165,24 @@ public class EditorView {
 
     /**
      * Sets the enabled state for all UI elements that require a selected page in order to function
-     * @param enabled enabled state
+     * @param isEnabled enabled state
      */
-    public void setPageRelatedEnabled(boolean enabled) {
-        this.deletePageButton.setEnabled(enabled);
-        this.bodyTextArea.setEnabled(enabled);
-        this.endingCheckBox.setEnabled(enabled);
-        this.linksTable.setEnabled(enabled);
-        this.createLinkButton.setEnabled(enabled);
-        this.deleteLinkButton.setEnabled(enabled);
+    public void setPageRelatedEnabled(boolean isEnabled) {
+        this.deletePageButton.setEnabled(isEnabled);
+        this.bodyTextArea.setEnabled(isEnabled);
+        this.saveBodyButton.setEnabled(isEnabled);
+        this.endingCheckBox.setEnabled(isEnabled);
+        this.linksTable.setEnabled(isEnabled);
+        this.createLinkButton.setEnabled(isEnabled);
+        this.deleteLinkButton.setEnabled(isEnabled);
     }
 
     /**
      * Sets the enabled state for the 'Delete Link' button.
-     * @param enabled enabled state for the 'Delete Link' button
+     * @param isEnabled enabled state for the 'Delete Link' button
      */
-    public void setDeleteLinkButtonEnabled(boolean enabled) {
-        this.deleteLinkButton.setEnabled(enabled);
+    public void setDeleteLinkButtonEnabled(boolean isEnabled) {
+        this.deleteLinkButton.setEnabled(isEnabled);
     }
 
     /**
