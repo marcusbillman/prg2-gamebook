@@ -201,10 +201,23 @@ public class EditorController {
                 String userInput = editorView.showInputDialog(
                         "Enter new target page id", "Edit Link Target", String.valueOf(link.getToPageId()));
                 if (userInput == null || !userInput.matches("\\d+")) return;
-                databaseModel.updateLinkToPageId(index, Integer.parseInt(userInput));
-            }
+                int toPageId = Integer.parseInt(userInput);
 
-            refreshCurrentPage();
+                // Only update the database if there is a page in the pages cache with the user-inputted target id
+                ArrayList<Page> pagesCache = databaseModel.getPagesCache();
+                for (Page page : pagesCache) {
+                    if (page.getId() == toPageId) {
+                        databaseModel.updateLinkToPageId(index, toPageId);
+                        refreshCurrentPage();
+                        return;
+                    }
+                }
+                editorView.showMessageDialog("A link can't point to a non-existent page. Please create a " +
+                        "page with the ID " + toPageId + " or change the link's target ID.",
+                        "Invalid page ID",
+                        JOptionPane.ERROR_MESSAGE
+                );
+            }
         }
 
         public void mousePressed(MouseEvent mouseEvent) {
