@@ -29,6 +29,8 @@ public class PlayerController {
      */
     public void populateUI() {
         Page page = this.databaseModel.getPage(1);
+
+        this.playerView.setBodyContent(page.getBody());
         for (Link link : page.getLinks()) {
             this.playerView.generateLinkButton(link, new LinkButtonListener());
         }
