@@ -24,6 +24,13 @@ public class PlayerView {
     }
 
     /**
+     * @param content text content of body text area
+     */
+    public void setBodyContent(String content) {
+        bodyTextArea.setText(content);
+    }
+
+    /**
      * Appends a link button to the buttons panel.
      * @param link link for which to append a button
      * @param actionListener listener to invoke when the button is clicked
