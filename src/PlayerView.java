@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.event.ActionListener;
 
 public class PlayerView {
     private final JFrame frame;
@@ -20,5 +21,20 @@ public class PlayerView {
         this.buttonsPanel.setLayout(new BoxLayout(this.buttonsPanel, BoxLayout.Y_AXIS));
 
         frame.setVisible(true);
+    }
+
+    /**
+     * Appends a link button to the buttons panel.
+     * @param link link for which to append a button
+     * @param actionListener listener to invoke when the button is clicked
+     */
+    public void generateLinkButton(Link link, ActionListener actionListener) {
+        JButton button = new JButton();
+        button.setText(link.getText());
+        button.setName(String.valueOf(link.getToPageId()));
+        button.addActionListener(actionListener);
+
+        this.buttonsPanel.add(button);
+        this.buttonsPanel.validate();
     }
 }
