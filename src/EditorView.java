@@ -99,7 +99,6 @@ public class EditorView {
      * @param pages pages to populate with
      */
     public void populatePagesTable(ArrayList<Page> pages) {
-        System.out.println("populating");
         DefaultTableModel tableModel = (DefaultTableModel) this.pagesTable.getModel();
         tableModel.setRowCount(0);
 
