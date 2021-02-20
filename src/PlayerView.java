@@ -43,6 +43,7 @@ public class PlayerView {
 
         this.buttonsPanel.add(button);
         this.buttonsPanel.validate();
+        this.buttonsPanel.repaint();
     }
 
     /**
@@ -51,5 +52,6 @@ public class PlayerView {
     public void removeLinkButtons() {
         this.buttonsPanel.removeAll();
         this.buttonsPanel.validate();
+        this.buttonsPanel.repaint();
     }
 }
