@@ -17,6 +17,7 @@ public class EditorView {
     private JTable pagesTable;
     private JButton createPageButton;
     private JButton deletePageButton;
+    private JButton refreshButton;
 
     private JPanel rightPanel;
     private JTextArea bodyTextArea;
@@ -207,6 +208,14 @@ public class EditorView {
      */
     public void addDeletePageButtonListener(ActionListener actionListener) {
         this.deletePageButton.addActionListener(actionListener);
+    }
+
+    /**
+     * Adds a listener for detecting when the user clicks the 'Refresh' button.
+     * @param actionListener listener that gets attached when this method is called from EditorController
+     */
+    public void addRefreshButtonListener(ActionListener actionListener) {
+        this.refreshButton.addActionListener(actionListener);
     }
 
     /**

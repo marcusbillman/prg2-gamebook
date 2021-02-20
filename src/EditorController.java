@@ -23,7 +23,6 @@ public class EditorController {
         this.databaseModel = databaseModel;
         this.editorView = editorView;
         this.currentPageId = -1;
-        this.editorView.setPageRelatedEnabled(false);
 
         // Populate UI
         this.refreshPages();
@@ -32,6 +31,7 @@ public class EditorController {
         this.editorView.addPagesTableListener(new PagesTableListener());
         this.editorView.addCreatePageButtonListener(new CreatePageButtonListener());
         this.editorView.addDeletePageButtonListener(new DeletePageButtonListener());
+        this.editorView.addRefreshButtonListener(new RefreshButtonListener());
         this.editorView.addSaveBodyButtonListener(new SaveBodyButtonListener());
         this.editorView.addEndingCheckBoxListener(new EndingCheckBoxListener());
         this.editorView.addLinksTableListener(new LinksTableListener());
@@ -46,6 +46,7 @@ public class EditorController {
     private void refreshPages() {
         ArrayList<Page> pages = this.databaseModel.getAllPages();
         this.editorView.populatePagesTable(pages);
+        this.editorView.setPageRelatedEnabled(false);
     }
 
     /**
@@ -123,6 +124,19 @@ public class EditorController {
             databaseModel.deletePage(index);
             refreshPages();
             selectPage(index);
+        }
+    }
+
+    /**
+     * Custom listener based on ActionListener that detects when the 'Refresh' button has been clicked by the user.
+     */
+    private class RefreshButtonListener implements ActionListener {
+        /**
+         * Does nothing after the 'Refresh' button has been clicked by the user.
+         * @param actionEvent event that invokes the listener
+         */
+        public void actionPerformed(ActionEvent actionEvent) {
+            refreshPages();
         }
     }
 
