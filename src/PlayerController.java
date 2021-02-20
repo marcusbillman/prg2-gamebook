@@ -50,7 +50,9 @@ public class PlayerController {
          */
         public void actionPerformed(ActionEvent actionEvent) {
             JButton button = (JButton) actionEvent.getSource();
-            System.out.println(button.getName());
+            int pageId = Integer.parseInt(button.getName());
+
+            goToPage(pageId);
         }
     }
 }
