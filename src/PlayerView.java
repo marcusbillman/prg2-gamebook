@@ -45,7 +45,11 @@ public class PlayerView {
      */
     public void generateLinkButton(Link link, ActionListener actionListener) {
         JButton button = new JButton();
-        button.setText(link.getText());
+
+        String linkText = link.getText();
+        if (linkText == null || linkText.length() < 1) linkText = "Next";
+        button.setText(linkText);
+
         button.setName(String.valueOf(link.getToPageId()));
         button.addActionListener(actionListener);
 
