@@ -24,6 +24,13 @@ public class PlayerView {
     }
 
     /**
+     * @return main frame
+     */
+    public JFrame getFrame() {
+        return frame;
+    }
+
+    /**
      * @param content text content of body text area
      */
     public void setBodyContent(String content) {
