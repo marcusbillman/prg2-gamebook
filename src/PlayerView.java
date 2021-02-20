@@ -7,6 +7,8 @@ public class PlayerView {
     private JPanel panel;
     private JTextArea bodyTextArea;
     private JPanel buttonsPanel;
+    private JButton playAgainButton;
+    private JButton quitButton;
 
     /**
      * Constructs a player view, packs the UI components and displays the
