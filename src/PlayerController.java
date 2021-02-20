@@ -46,11 +46,7 @@ public class PlayerController {
             this.playerView.generateLinkButton(link, new LinkButtonListener());
         }
 
-        if (page.isEnding()) {
-            this.playerView.setEndButtonsVisible(true);
-        } else {
-            this.playerView.setEndButtonsVisible(false);
-        }
+        this.playerView.setEndButtonsVisible(page.isEnding());
     }
 
     /**
