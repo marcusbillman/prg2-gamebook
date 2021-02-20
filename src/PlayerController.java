@@ -21,16 +21,20 @@ public class PlayerController {
         this.playerView = playerView;
         this.currentPageId = -1;
 
-        this.populateUI();
+        this.goToPage(1);
     }
 
     /**
      * Populates the UI with the latest page body and links from the database.
      */
-    public void populateUI() {
-        Page page = this.databaseModel.getPage(1);
+    public void goToPage(int pageId) {
+        Page page = this.databaseModel.getPage(pageId);
+
+        this.currentPageId = pageId;
 
         this.playerView.setBodyContent(page.getBody());
+
+        this.playerView.removeLinkButtons();
         for (Link link : page.getLinks()) {
             this.playerView.generateLinkButton(link, new LinkButtonListener());
         }
