@@ -70,6 +70,15 @@ public class PlayerView {
     }
 
     /**
+     * Sets the visible state of the "Play Again" and "Quit" buttons.
+     * @param isVisible visible state
+     */
+    public void setEndButtonsVisible(boolean isVisible) {
+        this.playAgainButton.setVisible(isVisible);
+        this.quitButton.setVisible(isVisible);
+    }
+
+    /**
      * Adds a listener for detecting when the user closes the application window.
      * @param windowListener listener that gets attached when this method is called from EditorController
      */
