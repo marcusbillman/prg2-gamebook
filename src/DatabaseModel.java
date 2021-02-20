@@ -18,7 +18,8 @@ public class DatabaseModel {
     }
 
     /**
-     * Establishes a connection to a MySQL database using the credentials in the DatabaseLoginData class.
+     * Constructs a DatabaseModel and establishes a connection to a MySQL database using the credentials in the
+     * DatabaseLoginData class.
      */
     public DatabaseModel() {
         try {
@@ -159,7 +160,7 @@ public class DatabaseModel {
     }
 
     /**
-     * Updates the body text of a page in the database
+     * Updates the body text of a page in the database.
      * @param pageId id of the page
      * @param body new body text to update with
      */

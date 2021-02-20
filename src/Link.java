@@ -8,7 +8,7 @@ public class Link {
     private String text;
 
     /**
-     * Constructs a link with all properties defined
+     * Constructs a link with all properties defined.
      * @param id unique identifier for use in database
      * @param fromPageId id of the page on which the link appears
      * @param toPageId id of the page to which the link points

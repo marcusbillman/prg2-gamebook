@@ -11,8 +11,7 @@ public class PlayerView {
     private JButton quitButton;
 
     /**
-     * Constructs a player view, packs the UI components and displays the
-     * frame.
+     * Constructs a player view, sets up UI components and displays the frame.
      * @param title window title
      */
     PlayerView(String title) {
@@ -79,7 +78,7 @@ public class PlayerView {
     }
 
     /**
-     * Adds a listener for detecting when the user clicks the 'Play Again' button.
+     * Adds a listener for detecting when the user clicks the "Play Again" button.
      * @param actionListener listener that gets attached when this method is called from EditorController
      */
     public void addPlayAgainButtonListener(ActionListener actionListener) {
@@ -87,7 +86,7 @@ public class PlayerView {
     }
 
     /**
-     * Adds a listener for detecting when the user clicks the 'Quit' button.
+     * Adds a listener for detecting when the user clicks the "Quit" button.
      * @param actionListener listener that gets attached when this method is called from EditorController
      */
     public void addQuitButtonListener(ActionListener actionListener) {

@@ -11,7 +11,7 @@ public class Page {
     private boolean isEnding;
 
     /**
-     * Constructs a page with all properties defined
+     * Constructs a page with all properties defined.
      * @param id unique identifier for use in database
      * @param body body text that is shown to the player along with the links
      * @param links links allowing the player to progress to other pages
@@ -38,7 +38,7 @@ public class Page {
     }
 
     /**
-     * Constructs a blank page with default property values
+     * Constructs a blank page with default property values.
      * @param id unique identifier for use in database
      */
     public Page(int id) {

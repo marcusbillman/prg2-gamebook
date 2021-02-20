@@ -28,8 +28,7 @@ public class EditorView {
     private JCheckBox endingCheckBox;
 
     /**
-     * Constructs an editor view, packs the UI components and displays the
-     * frame.
+     * Constructs an editor view, sets up UI components and displays the frame.
      * @param title window title
      */
     EditorView(String title) {
@@ -67,35 +66,35 @@ public class EditorView {
     }
 
     /**
-     * @return text content of 'Page Body' text area
+     * @return text content of the "Page Body" text area
      */
     public String getBodyContent() {
         return bodyTextArea.getText();
     }
 
     /**
-     * @param content text content of 'Page Body' text area
+     * @param content text content of the "Page Body" text area
      */
     public void setBodyContent(String content) {
         bodyTextArea.setText(content);
     }
 
     /**
-     * @return whether the 'Page is Ending' checkbox is checked
+     * @return whether the "Page is Ending" checkbox is checked
      */
     public boolean isEndingChecked() {
         return this.endingCheckBox.isSelected();
     }
 
     /**
-     * @param checked whether the 'Page is Ending' checkbox should be checked
+     * @param checked whether the "Page is Ending" checkbox should be checked
      */
     public void setEndingChecked(boolean checked) {
         this.endingCheckBox.setSelected(checked);
     }
 
     /**
-     * Populates the 'Pages' table with all pages and their id and body.
+     * Populates the "Pages" table with all pages and their id and body.
      * @param pages pages to populate with
      */
     public void populatePagesTable(ArrayList<Page> pages) {
@@ -111,15 +110,15 @@ public class EditorView {
     }
 
     /**
-     * @return index of the selected row in the 'Pages' table
+     * @return index of the selected row in the "Pages" table
      */
     public int getSelectedPage() {
         return this.pagesTable.getSelectedRow();
     }
 
     /**
-     * Visually selects a row in the 'Pages' table, indicating the currently selected page.
-     * @param index index of the row in the 'Pages' table
+     * Visually selects a row in the "Pages" table, indicating the currently selected page.
+     * @param index index of the row in the "Pages" table
      */
     public void setSelectedPage(int index) {
         try {
@@ -129,15 +128,15 @@ public class EditorView {
     }
 
     /**
-     * @return index of the selected row in the 'Page Links' table
+     * @return index of the selected row in the "Page Links" table
      */
     public int getSelectedLink() {
         return this.linksTable.getSelectedRow();
     }
 
     /**
-     * Visually selects a row in the 'Page Links' table, indicating the currently selected link.
-     * @param index index of the row in the 'Page Links' table
+     * Visually selects a row in the "Page Links" table, indicating the currently selected link.
+     * @param index index of the row in the "Page Links" table
      */
     public void setSelectedLink(int index) {
         try {
@@ -148,7 +147,7 @@ public class EditorView {
     }
 
     /**
-     * Populates the 'Page Links' table with all pages and their id and body.
+     * Populates the "Page Links" table with all pages and their id and body.
      * @param links links to populate with
      */
     public void populateLinksTable(ArrayList<Link> links) {
@@ -164,7 +163,7 @@ public class EditorView {
     }
 
     /**
-     * Sets the enabled state for all UI elements that require a selected page in order to function
+     * Sets the enabled state for all UI elements that require a selected page in order to function.
      * @param isEnabled enabled state
      */
     public void setPageRelatedEnabled(boolean isEnabled) {
@@ -178,15 +177,15 @@ public class EditorView {
     }
 
     /**
-     * Sets the enabled state for the 'Delete Link' button.
-     * @param isEnabled enabled state for the 'Delete Link' button
+     * Sets the enabled state for the "Delete Link" button.
+     * @param isEnabled enabled state for the "Delete Link" button
      */
     public void setDeleteLinkButtonEnabled(boolean isEnabled) {
         this.deleteLinkButton.setEnabled(isEnabled);
     }
 
     /**
-     * Adds a listener for detecting when the user clicks a page in the 'Pages' table.
+     * Adds a listener for detecting when the user clicks a page in the "Pages" table.
      * @param listSelectionListener listener that gets attached when this method is called from EditorController
      */
     public void addPagesTableListener(ListSelectionListener listSelectionListener) {
@@ -194,7 +193,7 @@ public class EditorView {
     }
 
     /**
-     * Adds a listener for detecting when the user clicks the 'Create Page' button.
+     * Adds a listener for detecting when the user clicks the "Create Page" button.
      * @param actionListener listener that gets attached when this method is called from EditorController
      */
     public void addCreatePageButtonListener(ActionListener actionListener) {
@@ -202,7 +201,7 @@ public class EditorView {
     }
 
     /**
-     * Adds a listener for detecting when the user clicks the 'Delete Page' button.
+     * Adds a listener for detecting when the user clicks the "Delete Page" button.
      * @param actionListener listener that gets attached when this method is called from EditorController
      */
     public void addDeletePageButtonListener(ActionListener actionListener) {
@@ -210,7 +209,7 @@ public class EditorView {
     }
 
     /**
-     * Adds a listener for detecting when the user clicks the 'Refresh' button.
+     * Adds a listener for detecting when the user clicks the "Refresh" button.
      * @param actionListener listener that gets attached when this method is called from EditorController
      */
     public void addRefreshButtonListener(ActionListener actionListener) {
@@ -218,7 +217,7 @@ public class EditorView {
     }
 
     /**
-     * Adds a listener for detecting when the user clicks the 'Save' button for the page body.
+     * Adds a listener for detecting when the user clicks the "Save" button for the page body.
      * @param actionListener listener that gets attached when this method is called from EditorController
      */
     public void addSaveBodyButtonListener(ActionListener actionListener) {
@@ -226,7 +225,7 @@ public class EditorView {
     }
 
     /**
-     * Adds a listener for detecting when the user clicks the 'Page is Ending' checkbox.
+     * Adds a listener for detecting when the user clicks the "Page is Ending" checkbox.
      * @param mouseListener listener that gets attached when this method is called from EditorController
      */
     public void addEndingCheckBoxListener(MouseListener mouseListener) {
@@ -234,7 +233,7 @@ public class EditorView {
     }
 
     /**
-     * Adds a listener for detecting when the user clicks a link in the 'Page Links' table.
+     * Adds a listener for detecting when the user clicks a link in the "Page Links" table.
      * @param mouseListener listener that gets attached when this method is called from EditorController
      */
     public void addLinksTableListener(MouseListener mouseListener) {
@@ -242,7 +241,7 @@ public class EditorView {
     }
 
     /**
-     * Adds a listener for detecting when the user clicks the 'Create Link' button.
+     * Adds a listener for detecting when the user clicks the "Create Link" button.
      * @param actionListener listener that gets attached when this method is called from EditorController
      */
     public void addCreateLinkButtonListener(ActionListener actionListener) {
@@ -250,7 +249,7 @@ public class EditorView {
     }
 
     /**
-     * Adds a listener for detecting when the user clicks the 'Delete Link' button.
+     * Adds a listener for detecting when the user clicks the "Delete Link" button.
      * @param actionListener listener that gets attached when this method is called from EditorController
      */
     public void addDeleteLinkButtonListener(ActionListener actionListener) {

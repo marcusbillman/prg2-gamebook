@@ -15,7 +15,7 @@ public class EditorController {
     private int currentPageId;
 
     /**
-     * Constructs the controller.
+     * Constructs the controller, populates the UI and sets up listeners.
      * @param databaseModel model that handles reading from and writing to a MySQL database
      * @param editorView view for the Gamebook Editor app
      */
@@ -41,7 +41,7 @@ public class EditorController {
     }
 
     /**
-     * Updates the 'Pages' table to reflect the latest list of pages from the database.
+     * Updates the "Pages" table to reflect the latest list of pages from the database.
      */
     private void refreshPages() {
         ArrayList<Page> pages = this.databaseModel.getAllPages();
@@ -60,7 +60,7 @@ public class EditorController {
     }
 
     /**
-     * Visually selects a desired page in the 'Pages' table and populates the right panel with page data.
+     * Visually selects a desired page in the "Pages" table and populates the right panel with page data.
      * @param index index of the page to select based on the pages cache
      */
     private void selectPage(int index) {
@@ -93,11 +93,11 @@ public class EditorController {
     }
 
     /**
-     * Custom listener based on ActionListener that detects when the 'Create Page' has been clicked by the user.
+     * Custom listener based on ActionListener that detects when the "Create Page" button has been clicked by the user.
      */
     private class CreatePageButtonListener implements ActionListener {
         /**
-         * Creates a new page after the 'Create Page' button has been clicked by the user.
+         * Creates a new page after the "Create Page" button has been clicked by the user.
          * @param actionEvent event that invokes the listener
          */
         public void actionPerformed(ActionEvent actionEvent) {
@@ -109,11 +109,11 @@ public class EditorController {
     }
 
     /**
-     * Custom listener based on ActionListener that detects when the 'Delete Page' has been clicked by the user.
+     * Custom listener based on ActionListener that detects when the "Delete Page" button has been clicked by the user.
      */
     private class DeletePageButtonListener implements ActionListener {
         /**
-         * Deletes the selected page after the 'Delete Page' button has been clicked by the user.
+         * Deletes the selected page after the "Delete Page" button has been clicked by the user.
          * @param actionEvent event that invokes the listener
          */
         public void actionPerformed(ActionEvent actionEvent) {
@@ -128,11 +128,11 @@ public class EditorController {
     }
 
     /**
-     * Custom listener based on ActionListener that detects when the 'Refresh' button has been clicked by the user.
+     * Custom listener based on ActionListener that detects when the "Refresh" button has been clicked by the user.
      */
     private class RefreshButtonListener implements ActionListener {
         /**
-         * Does nothing after the 'Refresh' button has been clicked by the user.
+         * Updates the "Pages" table after the "Refresh" button has been clicked by the user.
          * @param actionEvent event that invokes the listener
          */
         public void actionPerformed(ActionEvent actionEvent) {
@@ -141,7 +141,7 @@ public class EditorController {
     }
 
     /**
-     * Custom listener based on ActionListener that detects when the 'Save' button for the page body has been clicked
+     * Custom listener based on ActionListener that detects when the "Save" button for the page body has been clicked
      * by the user.
      */
     private class SaveBodyButtonListener implements ActionListener {
@@ -157,12 +157,12 @@ public class EditorController {
     }
 
     /**
-     * Custom listener based on MouseListener that detects when the 'Page is Ending' checkbox has been clicked by the
+     * Custom listener based on MouseListener that detects when the "Page is Ending" checkbox has been clicked by the
      * user.
      */
     private class EndingCheckBoxListener implements MouseListener {
         /**
-         * Updates the isEnding attribute of the current page when the 'Page is Ending' checkbox has been clicked by
+         * Updates the isEnding attribute of the current page when the "Page is Ending" checkbox has been clicked by
          * the user.
          * @param mouseEvent event that invokes the listener
          */
@@ -248,11 +248,11 @@ public class EditorController {
     }
 
     /**
-     * Custom listener based on ActionListener that detects when the 'Create Link' has been clicked by the user.
+     * Custom listener based on ActionListener that detects when the "Create Link" button has been clicked by the user.
      */
     private class CreateLinkButtonListener implements ActionListener {
         /**
-         * Creates a new link after the 'Create Link' button has been clicked by the user.
+         * Creates a new link after the "Create Link" button has been clicked by the user.
          * @param actionEvent event that invokes the listener
          */
         public void actionPerformed(ActionEvent actionEvent) {
@@ -265,11 +265,11 @@ public class EditorController {
     }
 
     /**
-     * Custom listener based on ActionListener that detects when the 'Delete Link' has been clicked by the user.
+     * Custom listener based on ActionListener that detects when the "Delete Link" button has been clicked by the user.
      */
     private class DeleteLinkButtonListener implements ActionListener {
         /**
-         * Deletes the selected link after the 'Delete Link' button has been clicked by the user.
+         * Deletes the selected link after the "Delete Link" button has been clicked by the user.
          * @param actionEvent event that invokes the listener
          */
         public void actionPerformed(ActionEvent actionEvent) {

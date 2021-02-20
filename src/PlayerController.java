@@ -14,7 +14,7 @@ public class PlayerController {
     private int currentPageId;
 
     /**
-     * Constructs the controller.
+     * Constructs the controller, populates the UI and sets up listeners.
      * @param databaseModel model that handles reading from and writing to a MySQL database
      * @param playerView view for the Gamebook Player app
      */
@@ -53,6 +53,9 @@ public class PlayerController {
         }
     }
 
+    /**
+     * Exits the program safely by closing the database connection.
+     */
     private void quit() {
         databaseModel.closeConnection();
         playerView.getFrame().dispose();
@@ -79,7 +82,7 @@ public class PlayerController {
      */
     private class PlayAgainButtonListener implements ActionListener {
         /**
-         * Visits the first page of the gamebook after the 'Play Again' button has been clicked by the user.
+         * Visits the first page of the gamebook after the "Play Again" button has been clicked by the user.
          * @param actionEvent event that invokes the listener
          */
         public void actionPerformed(ActionEvent actionEvent) {
@@ -88,11 +91,11 @@ public class PlayerController {
     }
 
     /**
-     * Custom listener based on ActionListener that detects when the 'Quit' button has been clicked by the user.
+     * Custom listener based on ActionListener that detects when the "Quit" button has been clicked by the user.
      */
     private class QuitButtonListener implements ActionListener {
         /**
-         * Visits the first page of the gamebook after the 'Quit' button has been clicked by the user.
+         * Visits the first page of the gamebook after the "Quit" button has been clicked by the user.
          * @param actionEvent event that invokes the listener
          */
         public void actionPerformed(ActionEvent actionEvent) {
