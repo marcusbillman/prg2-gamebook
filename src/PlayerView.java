@@ -87,6 +87,14 @@ public class PlayerView {
     }
 
     /**
+     * Adds a listener for detecting when the user clicks the 'Quit' button.
+     * @param actionListener listener that gets attached when this method is called from EditorController
+     */
+    public void addQuitButtonListener(ActionListener actionListener) {
+        this.quitButton.addActionListener(actionListener);
+    }
+
+    /**
      * Adds a listener for detecting when the user closes the application window.
      * @param windowListener listener that gets attached when this method is called from EditorController
      */

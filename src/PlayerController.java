@@ -27,6 +27,7 @@ public class PlayerController {
 
         // Set up listeners
         this.playerView.addPlayAgainButtonListener(new PlayerController.PlayAgainButtonListener());
+        this.playerView.addQuitButtonListener(new PlayerController.QuitButtonListener());
         this.playerView.addWindowCloseListener(new PlayerController.WindowCloseListener());
     }
 
@@ -78,6 +79,19 @@ public class PlayerController {
          */
         public void actionPerformed(ActionEvent actionEvent) {
             goToPage(1);
+        }
+    }
+
+    /**
+     * Custom listener based on ActionListener that detects when the 'Quit' button has been clicked by the user.
+     */
+    private class QuitButtonListener implements ActionListener {
+        /**
+         * Visits the first page of the gamebook after the 'Quit' button has been clicked by the user.
+         * @param actionEvent event that invokes the listener
+         */
+        public void actionPerformed(ActionEvent actionEvent) {
+            quit();
         }
     }
 
