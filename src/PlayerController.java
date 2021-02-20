@@ -25,6 +25,8 @@ public class PlayerController {
 
         this.goToPage(1);
 
+        // Set up listeners
+        this.playerView.addPlayAgainButtonListener(new PlayerController.PlayAgainButtonListener());
         this.playerView.addWindowCloseListener(new PlayerController.WindowCloseListener());
     }
 
@@ -63,6 +65,19 @@ public class PlayerController {
             int pageId = Integer.parseInt(button.getName());
 
             goToPage(pageId);
+        }
+    }
+
+    /**
+     * Custom listener based on ActionListener that detects when the "Play Again" button has been clicked by the user.
+     */
+    private class PlayAgainButtonListener implements ActionListener {
+        /**
+         * Visits the first page of the gamebook after the 'Play Again' button has been clicked by the user.
+         * @param actionEvent event that invokes the listener
+         */
+        public void actionPerformed(ActionEvent actionEvent) {
+            goToPage(1);
         }
     }
 

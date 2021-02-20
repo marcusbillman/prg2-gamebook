@@ -79,6 +79,14 @@ public class PlayerView {
     }
 
     /**
+     * Adds a listener for detecting when the user clicks the 'Play Again' button.
+     * @param actionListener listener that gets attached when this method is called from EditorController
+     */
+    public void addPlayAgainButtonListener(ActionListener actionListener) {
+        this.playAgainButton.addActionListener(actionListener);
+    }
+
+    /**
      * Adds a listener for detecting when the user closes the application window.
      * @param windowListener listener that gets attached when this method is called from EditorController
      */
