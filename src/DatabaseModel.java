@@ -88,8 +88,8 @@ public class DatabaseModel {
 
             // Create a Page object
             page = new Page(id, body, links, isEnding);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
 
         return page;

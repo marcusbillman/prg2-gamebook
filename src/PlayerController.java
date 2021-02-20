@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
  * DatabaseModel (MVC model).
  */
 public class PlayerController {
-    private DatabaseModel databaseModel;
+    private final DatabaseModel databaseModel;
     private final PlayerView playerView;
     private int currentPageId;
 

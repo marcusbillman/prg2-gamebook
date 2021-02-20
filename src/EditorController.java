@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * DatabaseModel (MVC model).
  */
 public class EditorController {
-    private DatabaseModel databaseModel;
+    private final DatabaseModel databaseModel;
     private final EditorView editorView;
     private int currentPageId;
 
