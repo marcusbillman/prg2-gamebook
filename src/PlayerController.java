@@ -53,6 +53,11 @@ public class PlayerController {
         }
     }
 
+    private void quit() {
+        databaseModel.closeConnection();
+        playerView.getFrame().dispose();
+    }
+
     /**
      * Custom listener based on ActionListener that detects when any link button has been clicked by the user.
      */
@@ -108,8 +113,7 @@ public class PlayerController {
          * @param windowEvent event that invokes the listener
          */
         public void windowClosing(WindowEvent windowEvent) {
-            databaseModel.closeConnection();
-            playerView.getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            quit();
         }
 
         public void windowClosed(WindowEvent windowEvent) {

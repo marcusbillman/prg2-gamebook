@@ -299,7 +299,7 @@ public class EditorController {
          */
         public void windowClosing(WindowEvent windowEvent) {
             databaseModel.closeConnection();
-            editorView.getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            editorView.getFrame().dispose();
         }
 
         public void windowClosed(WindowEvent windowEvent) {
