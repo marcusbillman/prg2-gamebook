@@ -44,4 +44,12 @@ public class PlayerView {
         this.buttonsPanel.add(button);
         this.buttonsPanel.validate();
     }
+
+    /**
+     * Removes all link buttons from the buttons panel.
+     */
+    public void removeLinkButtons() {
+        this.buttonsPanel.removeAll();
+        this.buttonsPanel.validate();
+    }
 }
