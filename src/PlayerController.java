@@ -1,6 +1,8 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 /**
  * MVC controller for the Gamebook Player that handles all communication between PlayerView (MVC view) and
@@ -22,6 +24,8 @@ public class PlayerController {
         this.currentPageId = -1;
 
         this.goToPage(1);
+
+        this.playerView.addWindowCloseListener(new PlayerController.WindowCloseListener());
     }
 
     /**
@@ -53,6 +57,39 @@ public class PlayerController {
             int pageId = Integer.parseInt(button.getName());
 
             goToPage(pageId);
+        }
+    }
+
+    /**
+     * Custom listener based on WindowListener that detects when the user closes the application window, safely
+     * exiting the application.
+     */
+    private class WindowCloseListener implements WindowListener {
+        public void windowOpened(WindowEvent windowEvent) {
+        }
+
+        /**
+         * Exits the program safely when the window is closed by the user. Closes the database connection.
+         * @param windowEvent event that invokes the listener
+         */
+        public void windowClosing(WindowEvent windowEvent) {
+            databaseModel.closeConnection();
+            playerView.getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        }
+
+        public void windowClosed(WindowEvent windowEvent) {
+        }
+
+        public void windowIconified(WindowEvent windowEvent) {
+        }
+
+        public void windowDeiconified(WindowEvent windowEvent) {
+        }
+
+        public void windowActivated(WindowEvent windowEvent) {
+        }
+
+        public void windowDeactivated(WindowEvent windowEvent) {
         }
     }
 }

@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowListener;
 
 public class PlayerView {
     private final JFrame frame;
@@ -60,5 +61,13 @@ public class PlayerView {
         this.buttonsPanel.removeAll();
         this.buttonsPanel.validate();
         this.buttonsPanel.repaint();
+    }
+
+    /**
+     * Adds a listener for detecting when the user closes the application window.
+     * @param windowListener listener that gets attached when this method is called from EditorController
+     */
+    public void addWindowCloseListener(WindowListener windowListener) {
+        frame.addWindowListener(windowListener);
     }
 }
