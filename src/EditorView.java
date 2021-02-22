@@ -46,6 +46,7 @@ public class EditorView {
         this.pagesTable.getColumnModel().getColumn(1).setPreferredWidth(1000);
         this.pagesTable.setDefaultEditor(Object.class, null); // Disable editing for the table
         this.pagesTable.getTableHeader().setReorderingAllowed(false); // Disable reordering columns by dragging
+        this.pagesTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); // Disable multi-row selection
 
         // Set up links table
         DefaultTableModel linksTableModel = new DefaultTableModel();
@@ -54,6 +55,7 @@ public class EditorView {
         this.linksTable.setModel(linksTableModel);
         this.linksTable.setDefaultEditor(Object.class, null); // Disable editing for the table
         this.linksTable.getTableHeader().setReorderingAllowed(false); // Disable reordering columns by dragging
+        this.linksTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); // Disable multi-row selection
 
         frame.setVisible(true);
     }
