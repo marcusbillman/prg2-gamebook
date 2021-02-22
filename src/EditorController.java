@@ -46,6 +46,9 @@ public class EditorController {
     private void refreshPages() {
         ArrayList<Page> pages = this.databaseModel.getAllPages();
         this.editorView.populatePagesTable(pages);
+        this.editorView.setBodyContent("");
+        this.editorView.setEndingChecked(false);
+        this.editorView.populateLinksTable(null);
         this.editorView.setPageRelatedEnabled(false);
     }
 

@@ -154,6 +154,8 @@ public class EditorView {
         DefaultTableModel tableModel = (DefaultTableModel) this.linksTable.getModel();
         tableModel.setRowCount(0);
 
+        if (links == null) return;
+
         for (Link link : links) {
             tableModel.addRow(new String[]{
                     link.getText(),
