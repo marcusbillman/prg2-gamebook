@@ -18,6 +18,7 @@
           <component id="af9b" class="javax.swing.JTextArea" binding="bodyTextArea">
             <constraints/>
             <properties>
+              <editable value="false"/>
               <lineWrap value="true"/>
               <minimumSize width="500" height="100"/>
               <preferredSize width="-1" height="200"/>
