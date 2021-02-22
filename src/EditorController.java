@@ -236,6 +236,8 @@ public class EditorController {
                         JOptionPane.ERROR_MESSAGE
                 );
             }
+
+            refreshCurrentPage();
         }
 
         public void mouseClicked(MouseEvent mouseEvent) {
