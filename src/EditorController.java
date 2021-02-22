@@ -197,7 +197,7 @@ public class EditorController {
          * Lets the user edit either the link text or the target page id of a clicked link.
          * @param mouseEvent event that invokes the listener
          */
-        public void mouseClicked(MouseEvent mouseEvent) {
+        public void mousePressed(MouseEvent mouseEvent) {
             JTable table = (JTable) mouseEvent.getSource();
             Point point = mouseEvent.getPoint();
             int index = table.rowAtPoint(point);
@@ -231,14 +231,14 @@ public class EditorController {
                     }
                 }
                 editorView.showMessageDialog("A link can't point to a non-existent page. Please create a " +
-                        "page with the ID " + toPageId + " or change the link's target ID.",
+                                "page with the ID " + toPageId + " or change the link's target ID.",
                         "Invalid page ID",
                         JOptionPane.ERROR_MESSAGE
                 );
             }
         }
 
-        public void mousePressed(MouseEvent mouseEvent) {
+        public void mouseClicked(MouseEvent mouseEvent) {
         }
 
         public void mouseReleased(MouseEvent mouseEvent) {
