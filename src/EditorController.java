@@ -79,7 +79,8 @@ public class EditorController {
     }
 
     /**
-     * Custom listener based on ListSelectionListener that updates the UI after a page has been selected by the user.
+     * Custom listener based on ListSelectionListener that detects when a row in the "Pages" table has been selected by
+     * the user.
      */
     private class PagesTableListener implements ListSelectionListener {
         /**
@@ -189,12 +190,13 @@ public class EditorController {
     }
 
     /**
-     * Custom listener based on MouseListener that detects when a page link has been clicked by the user, letting
-     * them edit either the link text or the target page id
+     * Custom listener based on MouseListener that detects when a row in the "Page Links" table has been clicked by the
+     * user.
      */
     private class LinksTableListener implements MouseListener {
         /**
-         * Lets the user edit either the link text or the target page id of a clicked link.
+         * Lets the user edit either the link text or the target page id of a clicked link, depending on the clicked
+         * column.
          * @param mouseEvent event that invokes the listener
          */
         public void mousePressed(MouseEvent mouseEvent) {
