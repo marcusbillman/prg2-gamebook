@@ -65,6 +65,7 @@ public class EditorController {
      */
     private void selectPage(int index) {
         ArrayList<Page> pagesCache = databaseModel.getPagesCache();
+        if (pagesCache.size() < 1) return;
         if (index == -1 || index >= pagesCache.size()) index = pagesCache.size() - 1;
 
         this.currentPageId = pagesCache.get(index).getId();
