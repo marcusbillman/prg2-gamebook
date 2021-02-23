@@ -9,6 +9,7 @@ import java.util.ArrayList;
 /**
  * View for the editor. Exposes methods for writing to and reading from the UI.
  */
+@SuppressWarnings("SameParameterValue")
 public class EditorView {
     private final JFrame frame;
     private JPanel panel;
@@ -32,7 +33,7 @@ public class EditorView {
      * @param title window title
      */
     EditorView(String title) {
-        this.frame = new JFrame(title);
+        frame = new JFrame(title);
         frame.setContentPane(panel);
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frame.pack();
@@ -41,21 +42,21 @@ public class EditorView {
         DefaultTableModel pagesTableModel = new DefaultTableModel();
         pagesTableModel.addColumn("ID");
         pagesTableModel.addColumn("Body");
-        this.pagesTable.setModel(pagesTableModel);
-        this.pagesTable.getColumnModel().getColumn(0).setPreferredWidth(100);
-        this.pagesTable.getColumnModel().getColumn(1).setPreferredWidth(1000);
-        this.pagesTable.setDefaultEditor(Object.class, null); // Disable editing for the table
-        this.pagesTable.getTableHeader().setReorderingAllowed(false); // Disable reordering columns by dragging
-        this.pagesTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); // Disable multi-row selection
+        pagesTable.setModel(pagesTableModel);
+        pagesTable.getColumnModel().getColumn(0).setPreferredWidth(100);
+        pagesTable.getColumnModel().getColumn(1).setPreferredWidth(1000);
+        pagesTable.setDefaultEditor(Object.class, null); // Disable editing for the table
+        pagesTable.getTableHeader().setReorderingAllowed(false); // Disable reordering columns by dragging
+        pagesTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); // Disable multi-row selection
 
         // Set up links table
         DefaultTableModel linksTableModel = new DefaultTableModel();
         linksTableModel.addColumn("Text");
         linksTableModel.addColumn("Target Page ID");
-        this.linksTable.setModel(linksTableModel);
-        this.linksTable.setDefaultEditor(Object.class, null); // Disable editing for the table
-        this.linksTable.getTableHeader().setReorderingAllowed(false); // Disable reordering columns by dragging
-        this.linksTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); // Disable multi-row selection
+        linksTable.setModel(linksTableModel);
+        linksTable.setDefaultEditor(Object.class, null); // Disable editing for the table
+        linksTable.getTableHeader().setReorderingAllowed(false); // Disable reordering columns by dragging
+        linksTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); // Disable multi-row selection
 
         frame.setVisible(true);
     }
@@ -85,14 +86,14 @@ public class EditorView {
      * @return whether the "Page is Ending" checkbox is checked
      */
     public boolean isEndingChecked() {
-        return this.endingCheckBox.isSelected();
+        return endingCheckBox.isSelected();
     }
 
     /**
      * @param checked whether the "Page is Ending" checkbox should be checked
      */
     public void setEndingChecked(boolean checked) {
-        this.endingCheckBox.setSelected(checked);
+        endingCheckBox.setSelected(checked);
     }
 
     /**
@@ -100,7 +101,7 @@ public class EditorView {
      * @param pages pages to populate with
      */
     public void populatePagesTable(ArrayList<Page> pages) {
-        DefaultTableModel tableModel = (DefaultTableModel) this.pagesTable.getModel();
+        DefaultTableModel tableModel = (DefaultTableModel) pagesTable.getModel();
         tableModel.setRowCount(0);
 
         for (Page page : pages) {
@@ -115,7 +116,7 @@ public class EditorView {
      * @return index of the selected row in the "Pages" table
      */
     public int getSelectedPage() {
-        return this.pagesTable.getSelectedRow();
+        return pagesTable.getSelectedRow();
     }
 
     /**
@@ -124,7 +125,7 @@ public class EditorView {
      */
     public void setSelectedPage(int index) {
         try {
-            this.pagesTable.setRowSelectionInterval(index, index);
+            pagesTable.setRowSelectionInterval(index, index);
         } catch (Exception ignored) {
         }
     }
@@ -133,7 +134,7 @@ public class EditorView {
      * @return index of the selected row in the "Page Links" table
      */
     public int getSelectedLink() {
-        return this.linksTable.getSelectedRow();
+        return linksTable.getSelectedRow();
     }
 
     /**
@@ -142,8 +143,8 @@ public class EditorView {
      */
     public void setSelectedLink(int index) {
         try {
-            if (index == -1 || index >= this.linksTable.getRowCount()) index = this.linksTable.getRowCount() -1;
-            this.linksTable.setRowSelectionInterval(index, index);
+            if (index == -1 || index >= linksTable.getRowCount()) index = linksTable.getRowCount() -1;
+            linksTable.setRowSelectionInterval(index, index);
         } catch (Exception ignored) {
         }
     }
@@ -153,7 +154,7 @@ public class EditorView {
      * @param links links to populate with
      */
     public void populateLinksTable(ArrayList<Link> links) {
-        DefaultTableModel tableModel = (DefaultTableModel) this.linksTable.getModel();
+        DefaultTableModel tableModel = (DefaultTableModel) linksTable.getModel();
         tableModel.setRowCount(0);
 
         if (links == null) return;
@@ -171,13 +172,13 @@ public class EditorView {
      * @param isEnabled enabled state
      */
     public void setPageRelatedEnabled(boolean isEnabled) {
-        this.deletePageButton.setEnabled(isEnabled);
-        this.bodyTextArea.setEnabled(isEnabled);
-        this.saveBodyButton.setEnabled(isEnabled);
-        this.endingCheckBox.setEnabled(isEnabled);
-        this.linksTable.setEnabled(isEnabled);
-        this.createLinkButton.setEnabled(isEnabled);
-        this.deleteLinkButton.setEnabled(isEnabled);
+        deletePageButton.setEnabled(isEnabled);
+        bodyTextArea.setEnabled(isEnabled);
+        saveBodyButton.setEnabled(isEnabled);
+        endingCheckBox.setEnabled(isEnabled);
+        linksTable.setEnabled(isEnabled);
+        createLinkButton.setEnabled(isEnabled);
+        deleteLinkButton.setEnabled(isEnabled);
     }
 
     /**
@@ -185,7 +186,7 @@ public class EditorView {
      * @param isEnabled enabled state for the "Delete Link" button
      */
     public void setDeleteLinkButtonEnabled(boolean isEnabled) {
-        this.deleteLinkButton.setEnabled(isEnabled);
+        deleteLinkButton.setEnabled(isEnabled);
     }
 
     /**
@@ -193,7 +194,7 @@ public class EditorView {
      * @param listSelectionListener listener that gets attached when this method is called from EditorController
      */
     public void addPagesTableListener(ListSelectionListener listSelectionListener) {
-        this.pagesTable.getSelectionModel().addListSelectionListener(listSelectionListener);
+        pagesTable.getSelectionModel().addListSelectionListener(listSelectionListener);
     }
 
     /**
@@ -201,7 +202,7 @@ public class EditorView {
      * @param actionListener listener that gets attached when this method is called from EditorController
      */
     public void addCreatePageButtonListener(ActionListener actionListener) {
-        this.createPageButton.addActionListener(actionListener);
+        createPageButton.addActionListener(actionListener);
     }
 
     /**
@@ -209,7 +210,7 @@ public class EditorView {
      * @param actionListener listener that gets attached when this method is called from EditorController
      */
     public void addDeletePageButtonListener(ActionListener actionListener) {
-        this.deletePageButton.addActionListener(actionListener);
+        deletePageButton.addActionListener(actionListener);
     }
 
     /**
@@ -217,7 +218,7 @@ public class EditorView {
      * @param actionListener listener that gets attached when this method is called from EditorController
      */
     public void addRefreshButtonListener(ActionListener actionListener) {
-        this.refreshButton.addActionListener(actionListener);
+        refreshButton.addActionListener(actionListener);
     }
 
     /**
@@ -225,7 +226,7 @@ public class EditorView {
      * @param actionListener listener that gets attached when this method is called from EditorController
      */
     public void addSaveBodyButtonListener(ActionListener actionListener) {
-        this.saveBodyButton.addActionListener(actionListener);
+        saveBodyButton.addActionListener(actionListener);
     }
 
     /**
@@ -233,7 +234,7 @@ public class EditorView {
      * @param mouseListener listener that gets attached when this method is called from EditorController
      */
     public void addEndingCheckBoxListener(MouseListener mouseListener) {
-        this.endingCheckBox.addMouseListener(mouseListener);
+        endingCheckBox.addMouseListener(mouseListener);
     }
 
     /**
@@ -241,7 +242,7 @@ public class EditorView {
      * @param mouseListener listener that gets attached when this method is called from EditorController
      */
     public void addLinksTableListener(MouseListener mouseListener) {
-        this.linksTable.addMouseListener(mouseListener);
+        linksTable.addMouseListener(mouseListener);
     }
 
     /**
@@ -249,7 +250,7 @@ public class EditorView {
      * @param actionListener listener that gets attached when this method is called from EditorController
      */
     public void addCreateLinkButtonListener(ActionListener actionListener) {
-        this.createLinkButton.addActionListener(actionListener);
+        createLinkButton.addActionListener(actionListener);
     }
 
     /**
@@ -257,7 +258,7 @@ public class EditorView {
      * @param actionListener listener that gets attached when this method is called from EditorController
      */
     public void addDeleteLinkButtonListener(ActionListener actionListener) {
-        this.deleteLinkButton.addActionListener(actionListener);
+        deleteLinkButton.addActionListener(actionListener);
     }
 
     /**

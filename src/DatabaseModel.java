@@ -23,7 +23,7 @@ public class DatabaseModel {
      */
     public DatabaseModel() {
         try {
-            this.connection = DriverManager.getConnection(
+            connection = DriverManager.getConnection(
                     "jdbc:mysql://" + DatabaseLoginData.address + ":" + DatabaseLoginData.port + "/" +
                             DatabaseLoginData.database +
                             "? allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC",
@@ -60,7 +60,7 @@ public class DatabaseModel {
             ex.printStackTrace();
         }
 
-        this.pagesCache = pages;
+        pagesCache = pages;
         return pages;
     }
 
@@ -123,7 +123,7 @@ public class DatabaseModel {
             ex.printStackTrace();
         }
 
-        this.linksCache = links;
+        linksCache = links;
         return links;
     }
 
@@ -279,8 +279,5 @@ public class DatabaseModel {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-    }
-
-    public static void main(String[] args) {
     }
 }

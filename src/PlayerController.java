@@ -21,9 +21,9 @@ public class PlayerController {
     public PlayerController(DatabaseModel databaseModel, PlayerView playerView) {
         this.databaseModel = databaseModel;
         this.playerView = playerView;
-        this.currentPageId = -1;
+        currentPageId = -1;
 
-        this.goToPage(1);
+        goToPage(1);
 
         // Set up listeners
         this.playerView.addPlayAgainButtonListener(new PlayerController.PlayAgainButtonListener());
@@ -35,18 +35,18 @@ public class PlayerController {
      * Populates the UI with the latest page body and links from the database.
      */
     public void goToPage(int pageId) {
-        Page page = this.databaseModel.getPage(pageId);
+        Page page = databaseModel.getPage(pageId);
 
-        this.currentPageId = pageId;
+        currentPageId = pageId;
 
-        this.playerView.setBodyContent(page.getBody());
+        playerView.setBodyContent(page.getBody());
 
-        this.playerView.removeLinkButtons();
+        playerView.removeLinkButtons();
         for (Link link : page.getLinks()) {
-            this.playerView.generateLinkButton(link, new LinkButtonListener());
+            playerView.generateLinkButton(link, new LinkButtonListener());
         }
 
-        this.playerView.setEndButtonsVisible(page.isEnding());
+        playerView.setEndButtonsVisible(page.isEnding());
     }
 
     /**

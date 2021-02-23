@@ -22,10 +22,10 @@ public class EditorController {
     public EditorController(DatabaseModel databaseModel, EditorView editorView) {
         this.databaseModel = databaseModel;
         this.editorView = editorView;
-        this.currentPageId = -1;
+        currentPageId = -1;
 
         // Populate UI
-        this.refreshPages();
+        refreshPages();
 
         // Set up listeners
         this.editorView.addPagesTableListener(new PagesTableListener());
@@ -44,22 +44,22 @@ public class EditorController {
      * Updates the "Pages" table to reflect the latest list of pages from the database.
      */
     private void refreshPages() {
-        ArrayList<Page> pages = this.databaseModel.getAllPages();
-        this.editorView.populatePagesTable(pages);
-        this.editorView.setBodyContent("");
-        this.editorView.setEndingChecked(false);
-        this.editorView.populateLinksTable(null);
-        this.editorView.setPageRelatedEnabled(false);
+        ArrayList<Page> pages = databaseModel.getAllPages();
+        editorView.populatePagesTable(pages);
+        editorView.setBodyContent("");
+        editorView.setEndingChecked(false);
+        editorView.populateLinksTable(null);
+        editorView.setPageRelatedEnabled(false);
     }
 
     /**
      * Updates all UI components related to the currently selected page to reflect the latest data from the database.
      */
     private void refreshCurrentPage() {
-        Page page = this.databaseModel.getPage(this.currentPageId);
-        this.editorView.setBodyContent(page.getBody());
-        this.editorView.setEndingChecked(page.isEnding());
-        this.editorView.populateLinksTable(page.getLinks());
+        Page page = databaseModel.getPage(currentPageId);
+        editorView.setBodyContent(page.getBody());
+        editorView.setEndingChecked(page.isEnding());
+        editorView.populateLinksTable(page.getLinks());
     }
 
     /**
@@ -71,11 +71,11 @@ public class EditorController {
         if (pagesCache.size() < 1) return;
         if (index == -1 || index >= pagesCache.size()) index = pagesCache.size() - 1;
 
-        this.currentPageId = pagesCache.get(index).getId();
-        this.editorView.setSelectedPage(index);
+        currentPageId = pagesCache.get(index).getId();
+        editorView.setSelectedPage(index);
         refreshCurrentPage();
-        this.editorView.setPageRelatedEnabled(true);
-        this.editorView.setDeleteLinkButtonEnabled(false);
+        editorView.setPageRelatedEnabled(true);
+        editorView.setDeleteLinkButtonEnabled(false);
     }
 
     /**

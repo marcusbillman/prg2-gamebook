@@ -14,13 +14,13 @@ public class PlayerView {
      * Constructs a player view, sets up UI components and displays the frame.
      * @param title window title
      */
-    PlayerView(String title) {
-        this.frame = new JFrame(title);
+    PlayerView(@SuppressWarnings("SameParameterValue") String title) {
+        frame = new JFrame(title);
         frame.setContentPane(panel);
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frame.pack();
 
-        this.buttonsPanel.setLayout(new BoxLayout(this.buttonsPanel, BoxLayout.Y_AXIS));
+        buttonsPanel.setLayout(new BoxLayout(buttonsPanel, BoxLayout.Y_AXIS));
 
         frame.setVisible(true);
     }
@@ -54,18 +54,18 @@ public class PlayerView {
         button.setName(String.valueOf(link.getToPageId()));
         button.addActionListener(actionListener);
 
-        this.buttonsPanel.add(button);
-        this.buttonsPanel.validate();
-        this.buttonsPanel.repaint();
+        buttonsPanel.add(button);
+        buttonsPanel.validate();
+        buttonsPanel.repaint();
     }
 
     /**
      * Removes all link buttons from the buttons panel.
      */
     public void removeLinkButtons() {
-        this.buttonsPanel.removeAll();
-        this.buttonsPanel.validate();
-        this.buttonsPanel.repaint();
+        buttonsPanel.removeAll();
+        buttonsPanel.validate();
+        buttonsPanel.repaint();
     }
 
     /**
@@ -73,8 +73,8 @@ public class PlayerView {
      * @param isVisible visible state
      */
     public void setEndButtonsVisible(boolean isVisible) {
-        this.playAgainButton.setVisible(isVisible);
-        this.quitButton.setVisible(isVisible);
+        playAgainButton.setVisible(isVisible);
+        quitButton.setVisible(isVisible);
     }
 
     /**
@@ -82,7 +82,7 @@ public class PlayerView {
      * @param actionListener listener that gets attached when this method is called from EditorController
      */
     public void addPlayAgainButtonListener(ActionListener actionListener) {
-        this.playAgainButton.addActionListener(actionListener);
+        playAgainButton.addActionListener(actionListener);
     }
 
     /**
@@ -90,7 +90,7 @@ public class PlayerView {
      * @param actionListener listener that gets attached when this method is called from EditorController
      */
     public void addQuitButtonListener(ActionListener actionListener) {
-        this.quitButton.addActionListener(actionListener);
+        quitButton.addActionListener(actionListener);
     }
 
     /**

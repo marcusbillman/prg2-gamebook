@@ -33,7 +33,7 @@ public class Page {
     public Page(int id, String body, boolean isEnding) {
         this.id = id;
         this.body = body;
-        this.links = new ArrayList<>();
+        links = new ArrayList<>();
         this.isEnding = isEnding;
     }
 
@@ -43,9 +43,9 @@ public class Page {
      */
     public Page(int id) {
         this.id = id;
-        this.body = "";
-        this.links = new ArrayList<>();
-        this.isEnding = false;
+        body = "";
+        links = new ArrayList<>();
+        isEnding = false;
     }
 
     /**
