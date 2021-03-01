@@ -33,6 +33,7 @@ public class PlayerController {
 
     /**
      * Populates the UI with the latest page body and links from the database.
+     * @param pageId id of the page whose data to populate with
      */
     public void goToPage(int pageId) {
         Page page = databaseModel.getPage(pageId);

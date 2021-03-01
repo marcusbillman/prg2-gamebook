@@ -178,6 +178,7 @@ public class DatabaseModel {
 
     /**
      * Updates the ending attribute of a page in the database.
+     * @param pageId id of the page
      * @param isEnding whether to treat this page as an ending of the gamebook
      */
     public void updatePageIsEnding(int pageId, boolean isEnding) {
