@@ -8,6 +8,8 @@ Projektet består av två program med grafiska gränssnitt. **Gamebook Player** 
 
 📑 [Loggbok](https://github.com/marcusbillman/prg2-gamebook/wiki/Loggbok) (GitHub Wiki)
 
+📊 [Klassdiagram](https://raw.githubusercontent.com/marcusbillman/prg2-gamebook/main/class-diagram.png) (fil i repository)
+
 ### Gamebook Player
 
 ![Gamebook Player Screenshot](https://raw.githubusercontent.com/marcusbillman/prg2-gamebook/main/gamebook-player.png)
