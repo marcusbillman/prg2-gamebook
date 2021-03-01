@@ -2,11 +2,15 @@
 
 Projektet består av två program med grafiska gränssnitt. **Gamebook Player** låter dig spela textbaserade soloäventyr, och **Gamebook Editor** låter dig redigera sådana. Båda programmen kommunicerar med en MySQL-databas som innehåller all data för soloäventyret.
 
-📑 [Grovplanering](https://github.com/marcusbillman/prg2-gamebook/wiki/Grovplanering)
+📑 [Post mortem](https://github.com/marcusbillman/prg2-gamebook/wiki/Post-mortem) (GitHub Wiki)
 
-📑 [Loggbok](https://github.com/marcusbillman/prg2-gamebook/wiki/Loggbok)
+📑 [Grovplanering](https://github.com/marcusbillman/prg2-gamebook/wiki/Grovplanering) (GitHub Wiki)
+
+📑 [Loggbok](https://github.com/marcusbillman/prg2-gamebook/wiki/Loggbok) (GitHub Wiki)
 
 ### Gamebook Player
+
+![Gamebook Player Screenshot](https://raw.githubusercontent.com/marcusbillman/prg2-gamebook/main/gamebook-player.png)
 
 Programmet kopplar upp sig mot databasen vid uppstart.
 
@@ -16,6 +20,8 @@ Programmet kopplar upp sig mot databasen vid uppstart.
 - När man klickar på en knapp så tas man till rätt sida.
 
 ### Gamebook Editor
+
+![Gamebook Player Screenshot](https://raw.githubusercontent.com/marcusbillman/prg2-gamebook/main/gamebook-editor.png)
 
 Programmet kopplar upp sig mot databasen vid uppstart. Alla ändringar synkas direkt med databasen.
 
