@@ -6,8 +6,6 @@ Projektet består av två program med grafiska gränssnitt. **Gamebook Player** 
 
 📑 [Post mortem](https://github.com/marcusbillman/prg2-gamebook/wiki/Post-mortem) (GitHub Wiki)
 
-📑 [Grovplanering](https://github.com/marcusbillman/prg2-gamebook/wiki/Grovplanering) (GitHub Wiki)
-
 📑 [Loggbok](https://github.com/marcusbillman/prg2-gamebook/wiki/Loggbok) (GitHub Wiki)
 
 📊 [Klassdiagram](https://raw.githubusercontent.com/marcusbillman/prg2-gamebook/main/class-diagram.png) (fil i repository)
