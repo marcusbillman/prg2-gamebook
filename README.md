@@ -2,6 +2,8 @@
 
 Projektet består av två program med grafiska gränssnitt. **Gamebook Player** låter dig spela textbaserade soloäventyr, och **Gamebook Editor** låter dig redigera sådana. Båda programmen kommunicerar med en MySQL-databas som innehåller all data för soloäventyret.
 
+☕ [Javadoc](https://marcusbillman.github.io/prg2-gamebook) (GitHub Pages)
+
 📑 [Post mortem](https://github.com/marcusbillman/prg2-gamebook/wiki/Post-mortem) (GitHub Wiki)
 
 📑 [Grovplanering](https://github.com/marcusbillman/prg2-gamebook/wiki/Grovplanering) (GitHub Wiki)
